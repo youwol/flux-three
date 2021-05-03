@@ -3,3 +3,4 @@
  */
 export * from './lib/main';
 export * from './lib/simple-module.module';
+export * from './lib/box.module';
