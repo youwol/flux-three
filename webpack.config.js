@@ -4,11 +4,16 @@ const pkg = require('./package.json');
 const ROOT = path.resolve(__dirname, 'src');
 const DESTINATION = path.resolve(__dirname, 'dist');
 
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 module.exports = {
     context: ROOT,
     entry: {
         'main': './index.ts'
     },
+    plugins: [
+        //new BundleAnalyzerPlugin()
+    ],
     output: {
         path: DESTINATION,
         libraryTarget: 'umd',
@@ -31,9 +36,19 @@ module.exports = {
             commonjs2:'rxjs/operators',
             root:['rxjs','operators']
         },
+        'three': {
+            commonjs:'three',
+            commonjs2:'three',
+            root:['THREE']
+        },
         '@youwol/flux-core': "@youwol/flux-core",
         '@youwol/cdn-client': '@youwol/cdn-client',
         '@youwol/flux-view': "@youwol/flux-view",
+        "three-trackballcontrols": {
+            commonjs:"three-trackballcontrols",
+            commonjs2:"three-trackballcontrols",
+            root:["TrackballControls"]
+        }
     }],
     module: {
         rules: [
