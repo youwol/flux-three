@@ -246,7 +246,6 @@ export namespace ModuleViewer{
                 {
                     class:"h-100 v-100",
                     connectedCallback: (div: HTMLDivElement) => {
-                        console.log("connectedCallback")
                         setTimeout(() => {
                             mdle.setRenderingDiv(div)
                             let observer = new ResizeObserver(() => mdle.resize(div))
