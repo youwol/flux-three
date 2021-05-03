@@ -1,7 +1,20 @@
-import { FluxPack, IEnvironment } from '@youwol/flux-core'
+import { FluxPack, IEnvironment, Journal } from '@youwol/flux-core'
+import { render } from '@youwol/flux-view'
+import { BufferGeometry } from 'three'
 import { AUTO_GENERATED } from '../auto_generated'
+import { geometryJournalView } from './journal.views'
 
 export function install(environment: IEnvironment){
+
+    Journal.registerView({
+        name:'Mesh-View @ flux-three',
+        description:'Journal view to display three.js Mesh',
+        isCompatible: (data:unknown) => data instanceof BufferGeometry,
+        view: (geometry: BufferGeometry) => {
+
+            return geometryJournalView(geometry) as any
+        }
+    })
     return
 }
 
