@@ -117,13 +117,16 @@ export namespace PluginSpotlights {
         }
 
         apply(){
+            if(this.subscription)
+                return 
+
             let defaultConf = this.getPersistentData<PersistentData>()
             this.subscription = this.parentModule.pluginsGateway.scene$.subscribe( scene => {
                 
-                let lights = scene.getObjectByName( "lights_"+this.moduleId);
+                let lights = scene.getObjectByName( "fluxThree_spotlights_"+this.moduleId);
                 scene.remove(lights)
                 let lightsGroup   = createDefaultLights({object:scene,intensity: defaultConf.spotsIntensity })
-                lightsGroup.name  = "lights_"+this.moduleId
+                lightsGroup.name  = "fluxThree_spotlights_"+this.moduleId
                 scene.add( lightsGroup)
                 this.scene = scene
             })
@@ -134,8 +137,9 @@ export namespace PluginSpotlights {
                 return 
 
             this.subscription.unsubscribe()           
-            let lights = this.scene.getObjectByName( "lights_"+this.moduleId);
+            let lights = this.scene.getObjectByName( "fluxThree_spotlights_"+this.moduleId);
             this.scene.remove(lights)
+            this.parentModule.pluginsGateway.scene$.next(this.scene)
             this.subscription = undefined
         }
     }
