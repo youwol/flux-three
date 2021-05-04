@@ -44,6 +44,7 @@ export namespace ModuleViewer{
 
         /* Control updated */
         controls$ = new ReplaySubject<TrackballControls>(1)
+
     }
 
 
@@ -177,13 +178,12 @@ export namespace ModuleViewer{
             this.scene.background = new Color(parseInt(config.backgroundColor));
             
             let lights = createDefaultLights(config.ambientIntensity)
-            this.scene.add(lights)
-
-            const controls = new TrackballControls(this.camera, renderingDiv)
-            this.controls = controls
-            this.pluginsGateway.controls$.next(this.controls)        
+            this.scene.add(lights)     
 
             try {
+                const controls = new TrackballControls(this.camera, renderingDiv)
+                this.controls = controls
+                this.pluginsGateway.controls$.next(this.controls)   
                 this.renderer = initializeRenderer({
                     renderingDiv,
                     scene: this.scene,
@@ -206,7 +206,7 @@ export namespace ModuleViewer{
             if( object.type != "Object3D" ){
                 this.scene.add(object);
                 this.pluginsGateway.scene$.next(this.scene)
-                fitSceneToContent(this.scene, this.camera, this.controls)
+                this.controls && fitSceneToContent(this.scene, this.camera, this.controls)
             }
         }
 
@@ -219,7 +219,7 @@ export namespace ModuleViewer{
 
             let oldScene = this.fluxScene
             this.fluxScene = this.fluxScene.add(objects)
-            this.pluginsGateway.fluxScene$.next({old: oldScene, new: this.fluxScene})
+            this.pluginsGateway.fluxScene$.next({old: oldScene, updated: this.fluxScene})
 
             if(!this.renderer)
                 return 
