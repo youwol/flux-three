@@ -2,11 +2,11 @@
 
 import * as operators from 'rxjs/operators'
 import {instantiateModules, parseGraph, renderTemplate, Runner} from "@youwol/flux-core"
-import { ModuleBox, ModuleCylinder, ModulePlane, ModuleSphere, ModuleStandardMaterial, ModuleViewer } from '../index'
-import { BoxBufferGeometry, CylinderBufferGeometry, Mesh, PlaneBufferGeometry, SphereBufferGeometry } from 'three'
+import { ModuleSphere, ModuleStandardMaterial, ModuleViewer } from '../index'
+import { Mesh } from 'three'
+import './mocks'
 
 console.log = () => {}
-window['ResizeObserver'] = undefined
 
 test('ViewerModule', (done) => {
 

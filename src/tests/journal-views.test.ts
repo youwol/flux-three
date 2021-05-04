@@ -1,10 +1,10 @@
 
-import * as operators from 'rxjs/operators'
-import {Context, instantiateModules, Journal, parseGraph, Runner} from "@youwol/flux-core"
-import { install, ModuleBox, ModuleCylinder, ModulePlane, ModuleSphere, ModuleStandardMaterial, ModuleViewer } from '../index'
-import { BoxBufferGeometry, CylinderBufferGeometry, Mesh, MeshStandardMaterial, PlaneBufferGeometry, Scene, SphereBufferGeometry } from 'three'
+import {Context, Journal} from "@youwol/flux-core"
+import { install } from '../index'
+import { Mesh, MeshStandardMaterial, Scene, SphereBufferGeometry } from 'three'
 import { render } from '@youwol/flux-view'
 
+import './mocks'
 
 
 console.log = () => {}
