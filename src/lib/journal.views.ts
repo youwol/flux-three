@@ -19,20 +19,25 @@ export function geometryJournalView(geometry: BufferGeometry) {
                         )
                     let camera = new PerspectiveCamera(70, renderingDiv.clientWidth / renderingDiv.clientHeight, 0.01, 1000)
                     camera.position.z = 10
-                    const controls = new TrackballControls(camera, renderingDiv)
                     
                     let scene = new Scene()
                     scene.background = new Color(0xFFFFFF);    
                     scene.add(mesh);                    
-                    scene.add(createDefaultLights(0.5))   
-                    initializeRenderer({
-                        controls,
-                        camera,
-                        scene,
-                        renderingDiv,
-                        registeredRenderLoopActions:{rotation: { action: ()=>mesh.rotation.y += 0.01, instance:undefined}},
-                        fit: true
-                    })  
+                    scene.add(createDefaultLights(0.5)) 
+                    renderingDiv.parentNode["threeScene"] = scene  
+                    try{
+                        initializeRenderer({
+                            controls: new TrackballControls(camera, renderingDiv),
+                            camera,
+                            scene,
+                            renderingDiv,
+                            registeredRenderLoopActions:{rotation: { action: ()=>mesh.rotation.y += 0.01, instance:undefined}},
+                            fit: true
+                        })  
+                    }
+                    catch(e){
+                        console.error("Render initialization failed")
+                    }
                 }
             }
         ]
