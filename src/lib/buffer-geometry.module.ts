@@ -57,16 +57,6 @@ export class BufferGeometryModule<PersistentData extends Schemas.Object3DConfigu
 
     emitObject( material: Material, conf:PersistentData, context: Context ){
         
-        if( Array.isArray(material))
-            material = material.find( d => d instanceof MeshStandardMaterial)
-
-        if( material == undefined || !( material instanceof MeshStandardMaterial) )
-        {
-            material = new MeshStandardMaterial({ color: 0x3399ff });
-            material.side = DoubleSide;
-            context.info("No material provided, use default", material)
-        }
-        
         let geometry = this.geometryGenerator( conf, this )     
 
         applyTransformation(geometry, conf.transform)
@@ -103,48 +93,4 @@ export function applyTransformation(geometry : Geometry | BufferGeometry, transf
     geometry.rotateY(rotation.y/180 *Math.PI)
     geometry.rotateZ(rotation.z/180 *Math.PI)
     geometry.translate(translation.x,translation.y,translation.z)
-}
-
-
-export function fitSceneToContent(scene: any, camera: any, controls :any) {
-    
-    const selection = scene.children
-    const fitRatio  =  1.2
-
-    const pcamera  = camera
-    const box = new Box3()
-    
-    selection.forEach( (mesh: any) => {
-        box.expandByObject(mesh)
-    })
-    const size   = box.getSize(new Vector3())
-    const center = box.getCenter(new Vector3())
-
-    const maxSize = Math.max(size.x, size.y, size.z)
-    const fitHeightDistance = maxSize / (2 * Math.atan((Math.PI * pcamera.fov) / 360))
-    const fitWidthDistance = fitHeightDistance / pcamera.aspect
-    const distance = fitRatio * Math.max(fitHeightDistance, fitWidthDistance)
-
-    const direction = controls.target
-      .clone()
-      .sub(camera.position)
-      .normalize()
-      .multiplyScalar(distance)
-
-    controls.maxDistance = distance * 10
-    controls.target.copy(center)
-    pcamera.near = distance / 100
-    pcamera.far = distance * 100
-    pcamera.updateProjectionMatrix()
-    camera.position.copy(controls.target).sub(direction)
-
-    controls.update()
-}
-
-
-
-export function createDefaultLights(intensity ) {
-    const g = new Group()
-    g.add( new AmbientLight(0xffffff, intensity) )
-    return g
 }
