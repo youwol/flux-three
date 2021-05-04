@@ -37,7 +37,7 @@ export namespace ModuleViewer{
         scene$ = new ReplaySubject<Scene>(1)
 
         /** When flux scene is updated */
-        fluxScene$ = new ReplaySubject<{old: FluxScene<Object3D>, new: FluxScene<Object3D>}>(1)
+        fluxScene$ = new ReplaySubject<{old: FluxScene<Object3D>, updated: FluxScene<Object3D>}>(1)
 
         /* Rendering div updated */
         renderingDiv$ = new ReplaySubject<HTMLDivElement>(1)
