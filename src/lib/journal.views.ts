@@ -4,7 +4,7 @@ import { createDefaultLights, initializeRenderer } from "./utils";
 import * as TrackballControls from 'three-trackballcontrols'
 
 
-export function geometryJournalView(geometry: BufferGeometry) {
+export function geometryJournalView(geometry: BufferGeometry | Mesh) {
     
     return {
         style:{width:'500px', height:'500px'},
@@ -13,9 +13,11 @@ export function geometryJournalView(geometry: BufferGeometry) {
                 class:"h-100 v-100",
                 connectedCallback: (renderingDiv: HTMLDivElement) => {
 
-                    let mesh = new Mesh(
-                        geometry, 
-                        new MeshStandardMaterial({ color: 0x3399ff, wireframe:true })
+                    let mesh = geometry instanceof Mesh 
+                        ? geometry
+                        : new Mesh(
+                            geometry, 
+                            new MeshStandardMaterial({ color: 0x3399ff, wireframe:true })
                         )
                     let camera = new PerspectiveCamera(70, renderingDiv.clientWidth / renderingDiv.clientHeight, 0.01, 1000)
                     camera.position.z = 10
@@ -31,7 +33,7 @@ export function geometryJournalView(geometry: BufferGeometry) {
                             camera,
                             scene,
                             renderingDiv,
-                            registeredRenderLoopActions:{rotation: { action: ()=>mesh.rotation.y += 0.01, instance:undefined}},
+                            registeredRenderLoopActions:{},//rotation: { action: ()=>mesh.rotation.y += 0.01, instance:undefined}},
                             fit: true
                         })  
                     }
