@@ -1,6 +1,6 @@
 {
     "name": "@youwol/flux-three",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Collection of modules for Flux to render 3D scenes. Wrapper around three.js.",
     "author": "",
     "keywords": [
