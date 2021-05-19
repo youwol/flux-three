@@ -52,7 +52,18 @@ export function initializeRenderer(
 
 export function fitSceneToContent(scene: Scene, camera: PerspectiveCamera, controls : TrackballControls) {
     
-    const selection = scene.children.filter( c => c['geometry'] )
+    let getGeometriesRec = (children) => {
+        let geometries = children
+        .filter( child => child instanceof Group || child['geometry'] )
+        .map( child => {
+            if(child instanceof Group) {
+                return getGeometriesRec(child.children).reduce( (acc,e) => acc.concat(e), [])
+            }
+            return [child]
+        })
+        return geometries.reduce( (acc,e) => acc.concat(e), [])
+    }
+    const selection = getGeometriesRec(scene.children) //scene.children.filter( c => c['geometry'] )
     const fitRatio  =  1.2
 
     const pcamera  = camera
