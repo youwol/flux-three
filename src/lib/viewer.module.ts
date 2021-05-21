@@ -1,10 +1,10 @@
 import { Scene as FluxScene, BuilderView, Flux, Property, RenderView, Schema, ModuleFlux, 
     expectSome, expectInstanceOf, Context, createEmptyScene } from '@youwol/flux-core'
     
-import { ReplaySubject } from 'rxjs'
-import { Color, Object3D, PerspectiveCamera, Scene, WebGLRenderer } from 'three'
+import { ReplaySubject, Subject, SubscribableOrPromise, Subscription } from 'rxjs'
+import { Color, Intersection, Object3D, PerspectiveCamera, Raycaster, Scene, Vector2, WebGLRenderer } from 'three'
 import * as TrackballControls from 'three-trackballcontrols'
-import {render} from '@youwol/flux-view'
+import {HTMLElement$, render, VirtualDOM} from '@youwol/flux-view'
 
 import{pack} from './main'
 import { createDefaultLights, fitSceneToContent, initializeRenderer } from './utils'
@@ -45,6 +45,10 @@ export namespace ModuleViewer{
         /* Control updated */
         controls$ = new ReplaySubject<TrackballControls>(1)
 
+        mouseDown$ = new Subject<MouseEvent>() 
+        mouseMove$  = new Subject<MouseEvent>() 
+        mouseUpd$  = new Subject<MouseEvent>() 
+        click$  = new Subject<MouseEvent>() 
     }
 
 
@@ -242,18 +246,35 @@ export namespace ModuleViewer{
     
     export function renderHtmlElement(mdle: Module) : HTMLElement {
         
-        let vDOM = {
+        let vDOM : VirtualDOM = {
             class:"h-100 v-100",
             children:[
                 {
                     class:"h-100 v-100",
                     connectedCallback: (div: HTMLDivElement) => {
+
+                        div.addEventListener( 
+                            'mousedown',
+                            (e) => mdle.pluginsGateway.mouseDown$.next(e)
+                            , false )
+                        div.addEventListener( 
+                            'click',
+                            (e) => mdle.pluginsGateway.click$.next(e)
+                            , false )
+                        div.addEventListener( 
+                            'mousemove',
+                            (e) => mdle.pluginsGateway.mouseMove$.next(e)
+                            , false )
+                        
+                        div.addEventListener( 
+                            'mouseup',
+                            (e) => mdle.pluginsGateway.mouseUp$.next(e)
+                            , false )
                         setTimeout(() => {
                             mdle.setRenderingDiv(div)
                             let observer = new ResizeObserver(() => mdle.resize(div))
                             observer.observe(div)
                         }, 0)
-
                     }
                 }
             ]
