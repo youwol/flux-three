@@ -206,7 +206,6 @@ export namespace ModuleViewer{
             if( object.type != "Object3D" ){
                 this.scene.add(object);
                 this.pluginsGateway.scene$.next(this.scene)
-                this.controls && fitSceneToContent(this.scene, this.camera, this.controls)
             }
         }
 
@@ -226,6 +225,9 @@ export namespace ModuleViewer{
 
             this.renderer.render(this.scene, this.camera);
             
+            if(oldScene.inScene.length != this.fluxScene.inScene.length && this.controls )
+                fitSceneToContent(this.scene, this.camera, this.controls)
+
             context.info("Scene updated", {
                 scene:this.scene, 
                 renderer: this.renderer, 
