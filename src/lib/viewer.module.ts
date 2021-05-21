@@ -47,7 +47,7 @@ export namespace ModuleViewer{
 
         mouseDown$ = new Subject<MouseEvent>() 
         mouseMove$  = new Subject<MouseEvent>() 
-        mouseUpd$  = new Subject<MouseEvent>() 
+        mouseUp$  = new Subject<MouseEvent>() 
         click$  = new Subject<MouseEvent>() 
     }
 
