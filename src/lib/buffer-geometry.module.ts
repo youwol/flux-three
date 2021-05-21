@@ -2,7 +2,7 @@
 
 import {Schemas } from './schemas';
 import { Context, expectInstanceOf, expectSingle, ModuleFlux, Pipe } from '@youwol/flux-core';
-import { Material, DoubleSide, Geometry, Box3, Object3D, Vector3, Group, AmbientLight, BufferGeometry, Mesh, MeshStandardMaterial } from 'three';
+import { Material, DoubleSide, Box3, Object3D, Vector3, Group, AmbientLight, BufferGeometry, Mesh, MeshStandardMaterial } from 'three';
 
 
 let contract = expectSingle({when:expectInstanceOf({
@@ -82,7 +82,7 @@ export function createFluxThreeObject3D( {object, id, displayName } :{object: Ob
 }
 
 
-export function applyTransformation(geometry : Geometry | BufferGeometry, transform:Schemas.GlobalTransform){
+export function applyTransformation(geometry : BufferGeometry, transform:Schemas.GlobalTransform){
 
     let scale       = transform.scaling
     let rotation    = transform.rotation

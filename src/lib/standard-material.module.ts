@@ -1,7 +1,7 @@
 
 
 import {Property, Flux,BuilderView, ModuleFlux, Pipe, Schema, freeContract, Context } from "@youwol/flux-core"
-import {MeshStandardMaterial, FrontSide, DoubleSide, BackSide, Color, Geometry, Mesh, Material} from 'three'
+import {MeshStandardMaterial, FrontSide, DoubleSide, BackSide, Color} from 'three'
 import { pack } from "./main"
 import { Schemas } from "./schemas"
 
