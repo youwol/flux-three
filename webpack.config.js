@@ -44,6 +44,9 @@ module.exports = {
         '@youwol/flux-core': "@youwol/flux-core",
         '@youwol/cdn-client': '@youwol/cdn-client',
         '@youwol/flux-view': "@youwol/flux-view",
+        '@youwol/fv-group': "@youwol/fv-group",
+        '@youwol/fv-button': "@youwol/fv-button",
+        '@youwol/fv-input': "@youwol/fv-input",
         "three-trackballcontrols": {
             commonjs:"three-trackballcontrols",
             commonjs2:"three-trackballcontrols",
