@@ -2,7 +2,9 @@
 
 import {Schemas } from './schemas';
 import { Context, expectInstanceOf, expectSingle, ModuleFlux, Pipe } from '@youwol/flux-core';
-import { Material, DoubleSide, Box3, Object3D, Vector3, Group, AmbientLight, BufferGeometry, Mesh, MeshStandardMaterial } from 'three';
+import { Material, DoubleSide, Box3, Object3D, Vector3, Group, AmbientLight, 
+    BufferGeometry, Mesh, MeshStandardMaterial } from 'three';
+import { getChildrenGeometries } from './utils';
 
 
 let contract = expectSingle({when:expectInstanceOf({
@@ -59,14 +61,13 @@ export class BufferGeometryModule<PersistentData extends Schemas.Object3DConfigu
         
         let geometry = this.geometryGenerator( conf, this )     
 
-        applyTransformation(geometry, conf.transform)
-
         context.info("Geometry created", geometry)
         
         let object3d = createFluxThreeObject3D( {
             object: new Mesh(geometry, material),
             id: conf.objectId,
-            displayName: conf.objectName
+            displayName: conf.objectName,
+            transform: conf.transform
         })
         this.object3d$.next({data:object3d, configuration:{}, context})
         context.terminate()
@@ -74,14 +75,20 @@ export class BufferGeometryModule<PersistentData extends Schemas.Object3DConfigu
 }
 
 
-export function createFluxThreeObject3D( {object, id, displayName } :{object: Object3D, id: string, displayName: string}){
+export function createFluxThreeObject3D( { object, id, displayName, transform} :{
+        object: Object3D, 
+        id: string, 
+        displayName: string,
+        transform?: Schemas.GlobalTransform}){
 
     object.name = id
     object.userData.displayName = displayName
+    transform && applyTransformation(object, transform)
+
     return object
 }
 
-
+/*
 export function applyTransformation(geometry : BufferGeometry, transform:Schemas.GlobalTransform){
 
     let scale       = transform.scaling
@@ -93,4 +100,38 @@ export function applyTransformation(geometry : BufferGeometry, transform:Schemas
     geometry.rotateY(rotation.y/180 *Math.PI)
     geometry.rotateZ(rotation.z/180 *Math.PI)
     geometry.translate(translation.x,translation.y,translation.z)
+}*/
+
+export function applyTransformation(object : Object3D, transform:Schemas.GlobalTransform){
+
+    let scale       = transform.scaling
+    let rotation    = transform.rotation
+    let translation = transform.translation
+
+    let applyOnGeom = (geometry : BufferGeometry) => {
+        geometry.scale(scale.x,scale.y,scale.z)
+        geometry.rotateX(rotation.x/180 *Math.PI)
+        geometry.rotateY(rotation.y/180 *Math.PI)
+        geometry.rotateZ(rotation.z/180 *Math.PI)
+        geometry.translate(translation.x,translation.y,translation.z)
+    } 
+    if(object instanceof Group){
+        let objects = getChildrenGeometries(object.children)
+        objects.forEach( obj => {
+            applyOnGeom(obj.geometry)
+        });
+    }
+    if(object instanceof Mesh){
+        applyOnGeom(object.geometry)
+    }
+
+    return object
+    /*
+    object.scale.set(scale.x,scale.y,scale.z)
+    object.rotateX(rotation.x/180 *Math.PI)
+    object.rotateY(rotation.y/180 *Math.PI)
+    object.rotateZ(rotation.z/180 *Math.PI)
+    object.translateX(translation.x)
+    object.translateY(translation.y)
+    object.translateZ(translation.z)*/
 }

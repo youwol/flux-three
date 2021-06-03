@@ -50,20 +50,22 @@ export function initializeRenderer(
     return renderer
 }
 
+export function getChildrenGeometries(children) {
+
+    let geometries = children
+    .filter( child => child instanceof Group || child['geometry'] )
+    .map( child => {
+        if(child instanceof Group) {
+            return getChildrenGeometries(child.children).reduce( (acc,e) => acc.concat(e), [])
+        }
+        return [child]
+    })
+    return geometries.reduce( (acc,e) => acc.concat(e), [])
+}
+
 export function fitSceneToContent(scene: Scene, camera: PerspectiveCamera, controls : TrackballControls) {
     
-    let getGeometriesRec = (children) => {
-        let geometries = children
-        .filter( child => child instanceof Group || child['geometry'] )
-        .map( child => {
-            if(child instanceof Group) {
-                return getGeometriesRec(child.children).reduce( (acc,e) => acc.concat(e), [])
-            }
-            return [child]
-        })
-        return geometries.reduce( (acc,e) => acc.concat(e), [])
-    }
-    const selection = getGeometriesRec(scene.children) //scene.children.filter( c => c['geometry'] )
+    const selection = getChildrenGeometries(scene.children) //scene.children.filter( c => c['geometry'] )
     const fitRatio  =  1.2
 
     const pcamera  = camera
