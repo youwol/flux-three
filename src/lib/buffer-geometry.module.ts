@@ -15,7 +15,7 @@ let contract = expectSingle({when:expectInstanceOf({
 })
 
 export function defaultMaterial() {
-    return new MeshStandardMaterial({ color: 0x3399ff })
+    return new MeshStandardMaterial({ color: 0x3399ff , side:DoubleSide})
 }
 
 
