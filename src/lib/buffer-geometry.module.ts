@@ -1,18 +1,28 @@
 
 
 import {Schemas } from './schemas';
-import { Context, expectInstanceOf, expectSingle, ModuleFlux, Pipe } from '@youwol/flux-core';
+import { Context, contract, expectInstanceOf, expectSingle, ModuleFlux, Pipe } from '@youwol/flux-core';
 import { Material, DoubleSide, Box3, Object3D, Vector3, Group, AmbientLight, 
     BufferGeometry, Mesh, MeshStandardMaterial } from 'three';
 import { getChildrenGeometries } from './utils';
 
 
-let contract = expectSingle({when:expectInstanceOf({
-        typeName: "Material",
-        Type: Material,
-        attNames:['material']
+let inputContract = contract({
+    description: "Get some mesh with some constraints and a boundary condition",
+    requireds: {
+    },
+    optionals:{
+        material: expectSingle({
+            when:expectInstanceOf({
+                typeName: "Material",
+                Type: Material,
+                attNames:['material']
+        })
     })
+    }
 })
+
+
 
 export function defaultMaterial() {
     return new MeshStandardMaterial({ color: 0x3399ff , side:DoubleSide})
@@ -50,9 +60,9 @@ export class BufferGeometryModule<PersistentData extends Schemas.Object3DConfigu
             id:'input',
             description: `Add 3D objects from incoming messages to the scene. If an object with same
             id is already in the scene it is replaced by the incoming one.`,
-            contract: contract,
-            onTriggered: ({data, configuration, context} : {data: Material, configuration: PersistentData, context: Context}) => {
-                this.emitObject(data, configuration, context)
+            contract: inputContract,
+            onTriggered: ({data, configuration, context} : {data: {material?:Material}, configuration: PersistentData, context: Context}) => {
+                this.emitObject(data.material || defaultMaterial(), configuration, context)
             }
         })
     }
