@@ -4,17 +4,25 @@ import { createDefaultLights, initializeRenderer } from "./utils";
 import * as TrackballControls from 'three-trackballcontrols'
 
 
-export function geometryJournalView(geometry: BufferGeometry | Mesh) {
+export function geometryJournalView(input: BufferGeometry | Mesh) {
     
+    let geometry = input instanceof Mesh
+        ? input.geometry
+        : input
+
     return {
+        class:'d-flex flex-column',
         style:{width:'500px', height:'500px'},
         children:[
             {
-                class:"h-100 v-100",
+                innerText:`Vertexes count: ${geometry.getAttribute('position').count}`
+            },
+            {
+                class:"flex-grow-1 v-100", style:{'min-height': '0px'},
                 connectedCallback: (renderingDiv: HTMLDivElement) => {
 
-                    let mesh = geometry instanceof Mesh 
-                        ? geometry
+                    let mesh = input instanceof Mesh 
+                        ? input
                         : new Mesh(
                             geometry, 
                             new MeshStandardMaterial({ color: 0x3399ff, wireframe:true })
