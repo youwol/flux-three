@@ -12,4 +12,5 @@ export * from './lib/buffer-geometry.module';
 export * from './lib/spotlights.module';
 export * from './lib/views/viewer-widgets.view';
 export * from './lib/live-skin.plugin';
+export * from './lib/bounding-box.module';
 export * from './lib/schemas'
