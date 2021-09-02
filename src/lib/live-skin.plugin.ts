@@ -5,8 +5,8 @@ import {
 
 import { pack } from './main'
 import { ModuleViewer } from './viewer.module'
-import { BoxHelper, BufferGeometry, DoubleSide, Group, Mesh,
-     MeshStandardMaterial, Object3D, Raycaster, Vector2 } from 'three'
+import { Box3, BoxHelper, BufferGeometry, DoubleSide, Group, Mesh,
+     MeshStandardMaterial, Object3D, Points, PointsMaterial, Raycaster, Vector2, Vector3 } from 'three'
      
 import { BehaviorSubject, combineLatest, Observable, ReplaySubject, Subscription } from 'rxjs'
 import { map, skip, } from 'rxjs/operators'
@@ -181,15 +181,75 @@ export namespace PluginLiveSkin {
         }
     }
 
+    export class PointsSkin extends Skin {
 
-    export class ObjectSkins {
+        color$: BehaviorSubject<string>
+        activated$: BehaviorSubject<boolean>
+        size$: BehaviorSubject<number>
+
+        object3D$: Observable<Points>
+
+        parameters(){
+            
+            return {
+                color: this.color$.getValue(),
+                activated: this.activated$.getValue(),
+                size: this.size$.getValue()
+            }
+        }
+
+        constructor(
+            body: Points,
+            { color, size, activated, globalParameters$ }:
+            { 
+                color: string,
+                activated: boolean, 
+                size: number, 
+                globalParameters$: GlobalParams
+            }) {
+            super(body)
+
+            this.color$ = new BehaviorSubject<string>(color)
+            this.activated$ = new BehaviorSubject<boolean>(activated)
+            this.size$ = new BehaviorSubject<number>(size)
+
+            this.object3D$ = combineLatest([
+                this.activated$, this.color$, this.size$,  
+                globalParameters$.visible$, globalParameters$.opacity$
+            ]).pipe(
+                map(([activated, color, size, visible, opacity]: 
+                    [boolean, string, number, boolean, number]) => {
+
+                    let mat = new PointsMaterial(
+                        {   color, 
+                            size: size,                            
+                            transparent: opacity != 1,
+                            opacity: opacity,
+                            side: DoubleSide,
+                            sizeAttenuation: false
+                        })
+                    mat.visible = activated && visible
+                    let decoration = new Points(body.geometry, mat)
+                    decoration.name = body.name + "_pointsSkin"
+                    decoration.userData = { ...body.userData, ...{ __fromMesh: body.name } }
+                    return decoration
+                })
+            )
+        }
+    }
+
+    export class ObjectSkins<TObject3D extends Object3D> {
 
         static suffix = "_flux-three_live-skin-controller"
 
         skins: Array<Skin>
-        object: Mesh
+        object: TObject3D
 
         skinsGroup$: Observable<Group>
+
+        subscriptions = new Array<Subscription>()
+
+
         globalParameters$ : {                    
             visible$: BehaviorSubject<boolean>,
             opacity$: BehaviorSubject<number>
@@ -201,7 +261,7 @@ export namespace PluginLiveSkin {
 
         constructor({ object, skins, globalParameters$}:
             {
-                object: Mesh,
+                object: TObject3D,
                 skins: Array<Skin>,
                 globalParameters$:  {                    
                     visible$: BehaviorSubject<boolean>,
@@ -225,9 +285,10 @@ export namespace PluginLiveSkin {
         }
 
         clear(viewer: ModuleViewer.Module) {
-            let ghost = new Object3D()
-            ghost.name = this.object.name + ObjectSkins.suffix
-            viewer.render([ghost], new Context("", {}))
+            // let ghost = new Object3D()
+            // ghost.name = this.object.name + ObjectSkins.suffix
+            // viewer.render([ghost], new Context("", {}))
+            this.subscriptions.forEach( s => s.unsubscribe())
         }
     }
 
@@ -277,15 +338,17 @@ export namespace PluginLiveSkin {
 
     export interface SkinFactory{
         Type: any
-        defaultParameters: (body:Mesh)=>{[key:string]: any}
-        view:(skin: Skin ) => VirtualDOM
-    }
+        defaultParameters: (body:Object3D)=>{[key:string]: any}
+        view:(skin: Skin ) => VirtualDOM,
+        isConsistent: (body:Object3D) => boolean
+    } 
 
     export function wireframeSkinFactory( 
         defaultParameters: (body:Mesh)=>{[key:string]: any} = (b)=>({})
         ) : SkinFactory{
         return {
             Type: WireframeSkin,
+            isConsistent: (body: Object3D) => body instanceof Mesh,
             defaultParameters: (body: Mesh) => {
                 return {
                     ...{ 
@@ -305,6 +368,7 @@ export namespace PluginLiveSkin {
         ) :SkinFactory{
         return {
             Type: PaintingSkin,
+            isConsistent: (body: Object3D) => body instanceof Mesh,
             defaultParameters: (body: Mesh) => {
                 return {
                     ...{ 
@@ -316,6 +380,29 @@ export namespace PluginLiveSkin {
                 }
             },
             view: (skin: PaintingSkin ) => renderPaintingGroup('Painting', skin)
+        }
+    }
+
+    export function pointsSkinFactory( 
+        defaultParameters: (body:Points)=>{[key:string]: any} = (b)=>({})
+        ) :SkinFactory{
+
+        return {
+            Type: PointsSkin,
+            isConsistent: (body: Object3D) => body instanceof Points,
+            defaultParameters: (body: Points) => {
+                let material = body.material as PointsMaterial
+                return {
+                    ...{ 
+                        body, 
+                        color: '#' + material.color.getHexString(), 
+                        activated: true,
+                        size: material.size
+                    },
+                    ...defaultParameters(body)
+                }
+            },
+            view: (skin: PointsSkin ) => renderPointsSkinGroup('PointsSkin', skin)
         }
     }
 
@@ -349,13 +436,14 @@ export namespace PluginLiveSkin {
         pineds$ = new BehaviorSubject<Array<string>>([])
         visibles$ = new BehaviorSubject<Array<string>>([])
 
-        skinsStore: { [key: string]: ObjectSkins } = {}
+        skinsStore: { [key: string]: ObjectSkins<Object3D> } = {}
 
         meshesId$ = new BehaviorSubject([])
         
         contexts : { [key: string]: any } = {}
 
         static defaultSkinsFactory = [
+            pointsSkinFactory(),
             wireframeSkinFactory(),
             paintingSkinFactory()
         ]
@@ -377,8 +465,8 @@ export namespace PluginLiveSkin {
             this.addInput({
                 id:"object", 
                 description:"object input",
-                contract: contract ?? getContractForTypedObject3D<Mesh>( Mesh, 'Mesh'),
-                onTriggered: ({data,configuration, context}) =>  this.addMeshes(data, context)
+                contract: contract ?? getContractForTypedObject3D<Object3D>( Object3D, 'Object3D'),
+                onTriggered: ({data,configuration, context}) =>  this.addObjects(data, context)
             })
             this.selected$.pipe(
                 skip(1) 
@@ -397,42 +485,47 @@ export namespace PluginLiveSkin {
             })
         }
 
-        addMeshes(data: Array<Mesh>, context: Context) {
+        addObjects(data: Array<Object3D>, context: Context) {
 
-            data.forEach( mesh => this.addMesh(mesh, context))
+            data.forEach( object => this.addObject(object, context))
         }
 
-        addMesh( mesh: Mesh, context: Context) {
+        addObject( object: Object3D, context: Context) {
 
-            this.skinsStore[mesh.name]?.clear(this.viewer)
-            let globalParameters$ = this.skinsStore[mesh.name]?.globalParameters$ || {
+            this.skinsStore[object.name]?.clear(this.viewer)
+            let globalParameters$ = this.skinsStore[object.name]?.globalParameters$ || {
                 visible$: new BehaviorSubject<boolean>(true),
                 opacity$: new BehaviorSubject<number>(1)
             } 
 
-            let skins = this.skinsFactory.map( (skinFactory, i) => {
-                let defaultParameters = skinFactory.defaultParameters(mesh)
-                let currentParameters = this.skinsStore[mesh.name]?.skinParameters()[i] || {}
+            let skins = this.skinsFactory
+            .filter( skinsFactory => skinsFactory.isConsistent(object))
+            .map( (skinFactory, i) => {
+                let defaultParameters = skinFactory.defaultParameters(object)
+                let prevSkin = this.skinsStore[object.name]?.skins.find( skin => skin.constructor.name == skinFactory.Type.name)
+                let currentParameters = prevSkin ? prevSkin.parameters() : {}
+                this.skinsStore[object.name]?.skinParameters()[i] || {}
                 let parameters = {...{globalParameters$}, ...defaultParameters,...currentParameters}
-                let skin = new skinFactory.Type(mesh, parameters)
+                let skin = new skinFactory.Type(object, parameters)
                 return skin
             })
 
-            this.skinsStore[mesh.name] = new ObjectSkins({ 
-                object:mesh, 
+            this.skinsStore[object.name] = new ObjectSkins({ 
+                object, 
                 skins:skins,
                 globalParameters$
             })
             this.meshesId$.next([
-                ...this.meshesId$.getValue().filter(id => id != mesh.name), 
-                mesh.name
+                ...this.meshesId$.getValue().filter(id => id != object.name), 
+                object.name
             ])
-            this.skinsStore[mesh.name].skinsGroup$.subscribe( group =>
+            let sub = this.skinsStore[object.name].skinsGroup$.subscribe( group =>
                 this.viewer.render([group], context)
                 )
-            this.contexts[mesh.name] = context
-            if(mesh.name == this.selected$.getValue()){
-                this.selected$.next(mesh.name)
+            this.skinsStore[object.name].subscriptions.push(sub)
+            this.contexts[object.name] = context
+            if(object.name == this.selected$.getValue()){
+                this.selected$.next(object.name)
             }
             
         }
@@ -482,10 +575,19 @@ export namespace PluginLiveSkin {
                     return mouse
                 }),
                 map( (mouse) => {
-                    let raycaster   = new Raycaster();        
+                    let raycaster   = new Raycaster(); 
+                      
                     raycaster.setFromCamera( mouse,  this.parentModule.camera );
-                    let meshes = Object.values(this.skinsStore).map( objectSkins => objectSkins.object)
-                    return raycaster.intersectObjects( meshes, true );
+                    let objects = Object.values(this.skinsStore)
+                    .map( objectSkins => objectSkins.object)
+
+                    const box = new Box3()    
+                    objects.forEach( (mesh: any) => {
+                        box.expandByObject(mesh)
+                    })
+                    raycaster.params.Points.threshold = box.getSize(new Vector3()).length()/100  
+                    let intersected = raycaster.intersectObjects( objects, true );
+                    return intersected
                 })
             ).subscribe((intersections) => {
                 if(intersections.length==0)
@@ -535,7 +637,7 @@ export namespace PluginLiveSkin {
             children: 
                 childrenWithReplace$(
                     input$,
-                    (objectSkins: ObjectSkins) => {
+                    (objectSkins: ObjectSkins<Mesh>) => {
                         return renderMeshGroup(mdle, objectSkins.object.name, mdle.selected$.getValue())
                     },
                     {}
@@ -550,7 +652,7 @@ export namespace PluginLiveSkin {
         geometry: BufferGeometry
         displayName: string
 
-        constructor(public readonly objectSkins: ObjectSkins) {
+        constructor(public readonly objectSkins: ObjectSkins<Mesh>) {
             super(objectSkins.object.name)
             this.geometry = objectSkins.object.geometry 
             this.displayName = objectSkins.object.userData.displayName || this.name
@@ -563,7 +665,7 @@ export namespace PluginLiveSkin {
         selectedId: string
         ) : VirtualDOM {
 
-        let keplerObject = mdle.skinsStore[objectId]
+        let keplerObject = mdle.skinsStore[objectId] as ObjectSkins<Mesh>
         Switch.View.defaultRadius = 10
         
         let contentView = (state: MeshGroupState) => {
@@ -689,6 +791,25 @@ export namespace PluginLiveSkin {
                 sliderRow('metal%', 0, 1, material.metalness$),
                 sliderRow('rough%', 0, 1, material.roughness$),
                 switchRowView('flat shading', material.flatShading$)
+            ]
+        })
+        let headerView = (state) => headerGrpView(title, state.expanded$, material.activated$)
+
+        return new ExpandableGroup.View({
+            state: new ExpandableGroup.State(title),
+            contentView, 
+            headerView, 
+            class: 'fv-bg-background fv-text-primary' 
+            } as any
+        )
+    }
+
+    function renderPointsSkinGroup(title: string, material: PointsSkin) : VirtualDOM{
+
+        let contentView = (state) => ({
+            children: [
+                colorRowView(material.color$),
+                sliderRow('size', 0, 100, material.size$)
             ]
         })
         let headerView = (state) => headerGrpView(title, state.expanded$, material.activated$)
