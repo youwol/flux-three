@@ -1,13 +1,13 @@
 import { Scene as FluxScene, BuilderView, Flux, Property, RenderView, Schema, ModuleFlux, 
     expectSome, expectInstanceOf, Context, createEmptyScene } from '@youwol/flux-core'
     
-import { ReplaySubject, Subject, SubscribableOrPromise, Subscription } from 'rxjs'
-import { Color, Intersection, Object3D, PerspectiveCamera, Raycaster, Scene, Vector2, WebGLRenderer } from 'three'
+import { ReplaySubject, Subject } from 'rxjs'
+import { Color, Object3D, PerspectiveCamera, Scene, WebGLRenderer } from 'three'
 import * as TrackballControls from 'three-trackballcontrols'
-import {HTMLElement$, render, VirtualDOM} from '@youwol/flux-view'
+import { render, VirtualDOM} from '@youwol/flux-view'
 
 import{pack} from './main'
-import { createDefaultLights, fitSceneToContent, initializeRenderer } from './utils'
+import { createDefaultLights, fitSceneToContentIfNeeded, getSceneBoundingBox, initializeRenderer } from './utils'
 
 /**
   ## Presentation
@@ -214,6 +214,7 @@ export namespace ModuleViewer{
         }
 
         removeObject( object : Object3D ){
+
             this.scene.remove(object)
             this.pluginsGateway.scene$.next(this.scene)
         }
@@ -221,17 +222,18 @@ export namespace ModuleViewer{
         render( objects: Array<Object3D>, context: Context ){
 
             let oldScene = this.fluxScene
+
+            let fromBBox = this.scene && getSceneBoundingBox(this.scene)
             this.fluxScene = this.fluxScene.add(objects)
+            fitSceneToContentIfNeeded(fromBBox, this.scene, this.camera, this.controls) 
+
             this.pluginsGateway.fluxScene$.next({old: oldScene, updated: this.fluxScene})
 
             if(!this.renderer)
                 return 
 
             this.renderer.render(this.scene, this.camera);
-            
-            if(oldScene.inScene.length != this.fluxScene.inScene.length && this.controls )
-                fitSceneToContent(this.scene, this.camera, this.controls)
-
+    
             context.info("Scene updated", {
                 scene:this.scene, 
                 renderer: this.renderer, 

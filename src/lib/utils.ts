@@ -65,17 +65,15 @@ export function getChildrenGeometries(children) {
 
 export function fitSceneToContent(scene: Scene, camera: PerspectiveCamera, controls : TrackballControls) {
     
-    const selection = getChildrenGeometries(scene.children) //scene.children.filter( c => c['geometry'] )
-    const fitRatio  =  1.2
+    let bbox = getSceneBoundingBox(scene)
+    let size = bbox.getSize(new Vector3())
+    let center = bbox.getCenter(new Vector3())
 
+    if(size.length() == 0)
+        return
+        
+    const fitRatio  =  1.2
     const pcamera  = camera
-    const box = new Box3()
-    
-    selection.forEach( (mesh: any) => {
-        box.expandByObject(mesh)
-    })
-    const size   = box.getSize(new Vector3())
-    const center = box.getCenter(new Vector3())
 
     const maxSize = Math.max(size.x, size.y, size.z)
     const fitHeightDistance = maxSize / (2 * Math.atan((Math.PI * pcamera.fov) / 360))
@@ -102,4 +100,39 @@ export function createDefaultLights(intensity ) {
     const g = new Group()
     g.add( new AmbientLight(0xffffff, intensity) )
     return g
+}
+
+export function getSceneBoundingBox(scene){
+    
+    const selection = getChildrenGeometries(scene.children) 
+    const box = new Box3()
+    
+    selection.forEach( (mesh: any) => {
+        box.expandByObject(mesh)
+    })
+
+    return box
+}
+
+export function fitSceneToContentIfNeeded(fromBBox: Box3, scene: Scene, camera: PerspectiveCamera, controls : TrackballControls){
+    
+    if(!scene || !camera || !controls)
+        return 
+    let toBBox = getSceneBoundingBox(scene)
+    let size = fromBBox.getSize(new Vector3())
+    let fromSize = Math.max(size.x, size.y, size.z)
+    size = toBBox.getSize(new Vector3())
+    let toSize = Math.max(size.x, size.y, size.z)
+
+    if(fromSize==0 && toSize>0){
+        fitSceneToContent(scene, camera, controls)
+    }
+
+    let minTranslation = fromBBox.min.distanceTo(toBBox.min) / fromSize
+    let maxTranslation = fromBBox.max.distanceTo(toBBox.max) / fromSize
+    let hasChanged = minTranslation > 0.1 || maxTranslation > 0.1
+    
+    if(hasChanged && controls){
+        fitSceneToContent(scene, camera, controls)
+    }
 }
