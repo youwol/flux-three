@@ -74,7 +74,9 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="lib_utils.html#createdefaultlights" class="tsd-kind-icon">create<wbr>Default<wbr>Lights</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="lib_utils.html#fitscenetocontent" class="tsd-kind-icon">fit<wbr>Scene<wbr>ToContent</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="lib_utils.html#fitscenetocontentifneeded" class="tsd-kind-icon">fit<wbr>Scene<wbr>ToContent<wbr>IfNeeded</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="lib_utils.html#getchildrengeometries" class="tsd-kind-icon">get<wbr>Children<wbr>Geometries</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="lib_utils.html#getsceneboundingbox" class="tsd-kind-icon">get<wbr>Scene<wbr>Bounding<wbr>Box</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="lib_utils.html#initializerenderer" class="tsd-kind-icon">initialize<wbr>Renderer</a></li>
 							</ul>
 						</section>
@@ -93,7 +95,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/youwol/flux-three/blob/294da10/src/lib/utils.ts#L101">src/lib/utils.ts:101</a></li>
+									<li>Defined in <a href="https://github.com/youwol/flux-three/blob/a2db04a/src/lib/utils.ts#L99">src/lib/utils.ts:99</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -116,11 +118,46 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/youwol/flux-three/blob/294da10/src/lib/utils.ts#L66">src/lib/utils.ts:66</a></li>
+									<li>Defined in <a href="https://github.com/youwol/flux-three/blob/a2db04a/src/lib/utils.ts#L66">src/lib/utils.ts:66</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
+								<li>
+									<h5>scene: <span class="tsd-signature-type">Scene</span></h5>
+								</li>
+								<li>
+									<h5>camera: <span class="tsd-signature-type">PerspectiveCamera</span></h5>
+								</li>
+								<li>
+									<h5>controls: <span class="tsd-signature-type">TrackballControls</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="fitscenetocontentifneeded" class="tsd-anchor"></a>
+					<h3>fit<wbr>Scene<wbr>ToContent<wbr>IfNeeded</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">fit<wbr>Scene<wbr>ToContent<wbr>IfNeeded<span class="tsd-signature-symbol">(</span>fromBBox<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Box3</span>, toBBox<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Box3</span>, scene<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Scene</span>, camera<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">PerspectiveCamera</span>, controls<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TrackballControls</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/youwol/flux-three/blob/a2db04a/src/lib/utils.ts#L117">src/lib/utils.ts:117</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>fromBBox: <span class="tsd-signature-type">Box3</span></h5>
+								</li>
+								<li>
+									<h5>toBBox: <span class="tsd-signature-type">Box3</span></h5>
+								</li>
 								<li>
 									<h5>scene: <span class="tsd-signature-type">Scene</span></h5>
 								</li>
@@ -145,7 +182,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/youwol/flux-three/blob/294da10/src/lib/utils.ts#L53">src/lib/utils.ts:53</a></li>
+									<li>Defined in <a href="https://github.com/youwol/flux-three/blob/a2db04a/src/lib/utils.ts#L53">src/lib/utils.ts:53</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -159,6 +196,29 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="getsceneboundingbox" class="tsd-anchor"></a>
+					<h3>get<wbr>Scene<wbr>Bounding<wbr>Box</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Scene<wbr>Bounding<wbr>Box<span class="tsd-signature-symbol">(</span>scene<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Box3</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/youwol/flux-three/blob/a2db04a/src/lib/utils.ts#L105">src/lib/utils.ts:105</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>scene: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Box3</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
 					<a name="initializerenderer" class="tsd-anchor"></a>
 					<h3>initialize<wbr>Renderer</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
@@ -168,7 +228,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/youwol/flux-three/blob/294da10/src/lib/utils.ts#L6">src/lib/utils.ts:6</a></li>
+									<li>Defined in <a href="https://github.com/youwol/flux-three/blob/a2db04a/src/lib/utils.ts#L6">src/lib/utils.ts:6</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -305,7 +365,13 @@
 						<a href="lib_utils.html#fitscenetocontent" class="tsd-kind-icon">fit<wbr>Scene<wbr>ToContent</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="lib_utils.html#fitscenetocontentifneeded" class="tsd-kind-icon">fit<wbr>Scene<wbr>ToContent<wbr>IfNeeded</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="lib_utils.html#getchildrengeometries" class="tsd-kind-icon">get<wbr>Children<wbr>Geometries</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="lib_utils.html#getsceneboundingbox" class="tsd-kind-icon">get<wbr>Scene<wbr>Bounding<wbr>Box</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="lib_utils.html#initializerenderer" class="tsd-kind-icon">initialize<wbr>Renderer</a>

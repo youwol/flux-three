@@ -88,6 +88,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="lib_live_skin_plugin.pluginliveskin.skinfactory.html#type" class="tsd-kind-icon">Type</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="lib_live_skin_plugin.pluginliveskin.skinfactory.html#defaultparameters" class="tsd-kind-icon">default<wbr>Parameters</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="lib_live_skin_plugin.pluginliveskin.skinfactory.html#isconsistent" class="tsd-kind-icon">is<wbr>Consistent</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="lib_live_skin_plugin.pluginliveskin.skinfactory.html#view" class="tsd-kind-icon">view</a></li>
 							</ul>
 						</section>
@@ -102,17 +103,17 @@
 					<div class="tsd-signature tsd-kind-icon">Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/294da10/src/lib/live-skin.plugin.ts#L279">src/lib/live-skin.plugin.ts:279</a></li>
+							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/a2db04a/src/lib/live-skin.plugin.ts#L340">src/lib/live-skin.plugin.ts:340</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="defaultparameters" class="tsd-anchor"></a>
 					<h3>default<wbr>Parameters</h3>
-					<div class="tsd-signature tsd-kind-icon">default<wbr>Parameters<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>body<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Mesh</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BufferGeometry</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Material</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Material</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-symbol">{}</span></div>
+					<div class="tsd-signature tsd-kind-icon">default<wbr>Parameters<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>body<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Object3D</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-symbol">{}</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/294da10/src/lib/live-skin.plugin.ts#L280">src/lib/live-skin.plugin.ts:280</a></li>
+							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/a2db04a/src/lib/live-skin.plugin.ts#L341">src/lib/live-skin.plugin.ts:341</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -120,14 +121,14 @@
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-signature">
 								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-interface">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>body<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Mesh</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BufferGeometry</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Material</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Material</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span></li>
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>body<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Object3D</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span></li>
 								</ul>
 								<ul class="tsd-descriptions">
 									<li class="tsd-description">
 										<h4 class="tsd-parameters-title">Parameters</h4>
 										<ul class="tsd-parameters">
 											<li>
-												<h5>body: <span class="tsd-signature-type">Mesh</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BufferGeometry</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Material</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Material</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h5>
+												<h5>body: <span class="tsd-signature-type">Object3D</span></h5>
 											</li>
 										</ul>
 										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">{}</span></h4>
@@ -143,12 +144,43 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="isconsistent" class="tsd-anchor"></a>
+					<h3>is<wbr>Consistent</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>Consistent<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>body<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Object3D</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/a2db04a/src/lib/live-skin.plugin.ts#L343">src/lib/live-skin.plugin.ts:343</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-interface">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>body<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Object3D</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>body: <span class="tsd-signature-type">Object3D</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="view" class="tsd-anchor"></a>
 					<h3>view</h3>
 					<div class="tsd-signature tsd-kind-icon">view<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>skin<span class="tsd-signature-symbol">: </span><a href="../classes/lib_live_skin_plugin.pluginliveskin.skin.html" class="tsd-signature-type" data-tsd-kind="Class">Skin</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Object3D</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">VirtualDOM</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/294da10/src/lib/live-skin.plugin.ts#L281">src/lib/live-skin.plugin.ts:281</a></li>
+							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/a2db04a/src/lib/live-skin.plugin.ts#L342">src/lib/live-skin.plugin.ts:342</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -244,7 +276,7 @@
 					<li class=" tsd-kind-class tsd-parent-kind-namespace tsd-has-type-parameter">
 						<a href="../classes/lib_live_skin_plugin.pluginliveskin.module.html" class="tsd-kind-icon">Module</a>
 					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-namespace">
+					<li class=" tsd-kind-class tsd-parent-kind-namespace tsd-has-type-parameter">
 						<a href="../classes/lib_live_skin_plugin.pluginliveskin.objectskins.html" class="tsd-kind-icon">Object<wbr>Skins</a>
 					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-namespace">
@@ -252,6 +284,9 @@
 					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-namespace">
 						<a href="../classes/lib_live_skin_plugin.pluginliveskin.persistentdata.html" class="tsd-kind-icon">Persistent<wbr>Data</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-namespace">
+						<a href="../classes/lib_live_skin_plugin.pluginliveskin.pointsskin.html" class="tsd-kind-icon">Points<wbr>Skin</a>
 					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-namespace tsd-has-type-parameter">
 						<a href="../classes/lib_live_skin_plugin.pluginliveskin.skin.html" class="tsd-kind-icon">Skin</a>
@@ -274,6 +309,9 @@
 								<a href="lib_live_skin_plugin.pluginliveskin.skinfactory.html#defaultparameters" class="tsd-kind-icon">default<wbr>Parameters</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="lib_live_skin_plugin.pluginliveskin.skinfactory.html#isconsistent" class="tsd-kind-icon">is<wbr>Consistent</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="lib_live_skin_plugin.pluginliveskin.skinfactory.html#view" class="tsd-kind-icon">view</a>
 							</li>
 						</ul>
@@ -288,6 +326,9 @@
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-namespace">
 						<a href="../modules/lib_live_skin_plugin.pluginliveskin.html#paintingskinfactory" class="tsd-kind-icon">painting<wbr>Skin<wbr>Factory</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-namespace">
+						<a href="../modules/lib_live_skin_plugin.pluginliveskin.html#pointsskinfactory" class="tsd-kind-icon">points<wbr>Skin<wbr>Factory</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-namespace">
 						<a href="../modules/lib_live_skin_plugin.pluginliveskin.html#wireframeskinfactory" class="tsd-kind-icon">wireframe<wbr>Skin<wbr>Factory</a>
