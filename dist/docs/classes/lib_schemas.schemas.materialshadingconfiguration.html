@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>MaterialConfiguration | @youwol/flux-three</title>
+	<title>MaterialShadingConfiguration | @youwol/flux-three</title>
 	<meta name="description" content="Documentation for @youwol/flux-three">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -61,10 +61,10 @@
 					<a href="../modules/lib_schemas.schemas.html">Schemas</a>
 				</li>
 				<li>
-					<a href="lib_schemas.schemas.materialconfiguration.html">MaterialConfiguration</a>
+					<a href="lib_schemas.schemas.materialshadingconfiguration.html">MaterialShadingConfiguration</a>
 				</li>
 			</ul>
-			<h1>Class MaterialConfiguration</h1>
+			<h1>Class MaterialShadingConfiguration</h1>
 		</div>
 	</div>
 </header>
@@ -75,12 +75,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">MaterialConfiguration</span>
-						<ul class="tsd-hierarchy">
-							<li>
-								<a href="lib_schemas.schemas.standardmaterialconfiguration.html" class="tsd-signature-type" data-tsd-kind="Class">StandardMaterialConfiguration</a>
-							</li>
-						</ul>
+						<span class="target">MaterialShadingConfiguration</span>
 					</li>
 				</ul>
 			</section>
@@ -91,18 +86,17 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="lib_schemas.schemas.materialconfiguration.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="lib_schemas.schemas.materialshadingconfiguration.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="lib_schemas.schemas.materialconfiguration.html#depthtest" class="tsd-kind-icon">depth<wbr>Test</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="lib_schemas.schemas.materialconfiguration.html#depthwrite" class="tsd-kind-icon">depth<wbr>Write</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="lib_schemas.schemas.materialconfiguration.html#opacity" class="tsd-kind-icon">opacity</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="lib_schemas.schemas.materialconfiguration.html#side" class="tsd-kind-icon">side</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="lib_schemas.schemas.materialconfiguration.html#transparent" class="tsd-kind-icon">transparent</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="lib_schemas.schemas.materialconfiguration.html#visible" class="tsd-kind-icon">visible</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="lib_schemas.schemas.materialshadingconfiguration.html#emissive" class="tsd-kind-icon">emissive</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="lib_schemas.schemas.materialshadingconfiguration.html#emissiveintensity" class="tsd-kind-icon">emissive<wbr>Intensity</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="lib_schemas.schemas.materialshadingconfiguration.html#flatshading" class="tsd-kind-icon">flat<wbr>Shading</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="lib_schemas.schemas.materialshadingconfiguration.html#metalness" class="tsd-kind-icon">metalness</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="lib_schemas.schemas.materialshadingconfiguration.html#roughness" class="tsd-kind-icon">roughness</a></li>
 							</ul>
 						</section>
 					</div>
@@ -114,22 +108,39 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Material<wbr>Configuration<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="lib_schemas.schemas.materialconfiguration.html" class="tsd-signature-type" data-tsd-kind="Class">MaterialConfiguration</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Material<wbr>Shading<wbr>Configuration<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{ </span>emissive<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>emissiveIntensity<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>flatShading<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>metalness<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>roughness<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="lib_schemas.schemas.materialshadingconfiguration.html" class="tsd-signature-type" data-tsd-kind="Class">MaterialShadingConfiguration</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/youwol/flux-three/blob/75c2548/src/lib/schemas.ts#L181">src/lib/schemas.ts:181</a></li>
+									<li>Defined in <a href="https://github.com/youwol/flux-three/blob/6ed8fa0/src/lib/schemas.ts#L240">src/lib/schemas.ts:240</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>__namedParameters: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = ...</span></h5>
+									<h5>params: <span class="tsd-signature-symbol">{ </span>emissive<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>emissiveIntensity<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>flatShading<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>metalness<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>roughness<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> = ...</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter">
+											<h5><span class="tsd-flag ts-flagOptional">Optional</span> emissive<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5><span class="tsd-flag ts-flagOptional">Optional</span> emissive<wbr>Intensity<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5><span class="tsd-flag ts-flagOptional">Optional</span> flat<wbr>Shading<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5><span class="tsd-flag ts-flagOptional">Optional</span> metalness<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5><span class="tsd-flag ts-flagOptional">Optional</span> roughness<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span></h5>
+										</li>
+									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="lib_schemas.schemas.materialconfiguration.html" class="tsd-signature-type" data-tsd-kind="Class">MaterialConfiguration</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="lib_schemas.schemas.materialshadingconfiguration.html" class="tsd-signature-type" data-tsd-kind="Class">MaterialShadingConfiguration</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -137,62 +148,52 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="depthtest" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> depth<wbr>Test</h3>
-					<div class="tsd-signature tsd-kind-icon">depth<wbr>Test<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<a name="emissive" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> emissive</h3>
+					<div class="tsd-signature tsd-kind-icon">emissive<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;0x0&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/75c2548/src/lib/schemas.ts#L169">src/lib/schemas.ts:169</a></li>
+							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/6ed8fa0/src/lib/schemas.ts#L216">src/lib/schemas.ts:216</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="depthwrite" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> depth<wbr>Write</h3>
-					<div class="tsd-signature tsd-kind-icon">depth<wbr>Write<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<a name="emissiveintensity" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> emissive<wbr>Intensity</h3>
+					<div class="tsd-signature tsd-kind-icon">emissive<wbr>Intensity<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 1</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/75c2548/src/lib/schemas.ts#L172">src/lib/schemas.ts:172</a></li>
+							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/6ed8fa0/src/lib/schemas.ts#L223">src/lib/schemas.ts:223</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="opacity" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> opacity</h3>
-					<div class="tsd-signature tsd-kind-icon">opacity<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="flatshading" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> flat<wbr>Shading</h3>
+					<div class="tsd-signature tsd-kind-icon">flat<wbr>Shading<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/75c2548/src/lib/schemas.ts#L166">src/lib/schemas.ts:166</a></li>
+							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/6ed8fa0/src/lib/schemas.ts#L240">src/lib/schemas.ts:240</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="side" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> side</h3>
-					<div class="tsd-signature tsd-kind-icon">side<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="metalness" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> metalness</h3>
+					<div class="tsd-signature tsd-kind-icon">metalness<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0.3</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/75c2548/src/lib/schemas.ts#L181">src/lib/schemas.ts:181</a></li>
+							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/6ed8fa0/src/lib/schemas.ts#L237">src/lib/schemas.ts:237</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="transparent" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> transparent</h3>
-					<div class="tsd-signature tsd-kind-icon">transparent<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<a name="roughness" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> roughness</h3>
+					<div class="tsd-signature tsd-kind-icon">roughness<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0.2</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/75c2548/src/lib/schemas.ts#L163">src/lib/schemas.ts:163</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="visible" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> visible</h3>
-					<div class="tsd-signature tsd-kind-icon">visible<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/75c2548/src/lib/schemas.ts#L175">src/lib/schemas.ts:175</a></li>
+							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/6ed8fa0/src/lib/schemas.ts#L230">src/lib/schemas.ts:230</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -267,36 +268,39 @@
 					<li class=" tsd-kind-class tsd-parent-kind-namespace">
 						<a href="lib_schemas.schemas.globaltransform.html" class="tsd-kind-icon">Global<wbr>Transform</a>
 					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-namespace">
+						<a href="lib_schemas.schemas.materialadvancedconfiguration.html" class="tsd-kind-icon">Material<wbr>Advanced<wbr>Configuration</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-namespace">
-						<a href="lib_schemas.schemas.materialconfiguration.html" class="tsd-kind-icon">Material<wbr>Configuration</a>
+						<a href="lib_schemas.schemas.materialshadingconfiguration.html" class="tsd-kind-icon">Material<wbr>Shading<wbr>Configuration</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="lib_schemas.schemas.materialconfiguration.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="lib_schemas.schemas.materialshadingconfiguration.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="lib_schemas.schemas.materialconfiguration.html#depthtest" class="tsd-kind-icon">depth<wbr>Test</a>
+								<a href="lib_schemas.schemas.materialshadingconfiguration.html#emissive" class="tsd-kind-icon">emissive</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="lib_schemas.schemas.materialconfiguration.html#depthwrite" class="tsd-kind-icon">depth<wbr>Write</a>
+								<a href="lib_schemas.schemas.materialshadingconfiguration.html#emissiveintensity" class="tsd-kind-icon">emissive<wbr>Intensity</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="lib_schemas.schemas.materialconfiguration.html#opacity" class="tsd-kind-icon">opacity</a>
+								<a href="lib_schemas.schemas.materialshadingconfiguration.html#flatshading" class="tsd-kind-icon">flat<wbr>Shading</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="lib_schemas.schemas.materialconfiguration.html#side" class="tsd-kind-icon">side</a>
+								<a href="lib_schemas.schemas.materialshadingconfiguration.html#metalness" class="tsd-kind-icon">metalness</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="lib_schemas.schemas.materialconfiguration.html#transparent" class="tsd-kind-icon">transparent</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="lib_schemas.schemas.materialconfiguration.html#visible" class="tsd-kind-icon">visible</a>
+								<a href="lib_schemas.schemas.materialshadingconfiguration.html#roughness" class="tsd-kind-icon">roughness</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-class tsd-parent-kind-namespace">
+						<a href="lib_schemas.schemas.materialvisibilityconfiguration.html" class="tsd-kind-icon">Material<wbr>Visibility<wbr>Configuration</a>
+					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-namespace">
 						<a href="lib_schemas.schemas.object3dconfiguration.html" class="tsd-kind-icon">Object3DConfiguration</a>
 					</li>
