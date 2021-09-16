@@ -36,19 +36,28 @@ export namespace ModuleSphere {
         /**
          * Sphere radius, default to 1.
          */
-        @Property({ description: "radius of the sphere" })
+        @Property({ 
+            description: "radius of the sphere",
+            min: 0
+        })
         readonly radius : number
 
         /**
          * Number of horizontal segments. Minimum value is 3, and the default is 8.
          */
-        @Property({ description: "Number of horizontal segments. Minimum value is 3, and the default is 8." })
+        @Property({ 
+            description: "Number of horizontal segments. Minimum value is 3, and the default is 8.",
+            min: 3
+        })
         readonly widthCount : number
 
         /**
          * Number of vertical segments. Minimum value is 2, and the default is 6.
          */
-        @Property({ description: "Number of vertical segments. Minimum value is 2, and the default is 6." })
+        @Property({ 
+            description: "Number of vertical segments. Minimum value is 2, and the default is 6.",
+            min: 2
+        })
         readonly heightCount : number
 
 

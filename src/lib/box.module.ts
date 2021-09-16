@@ -38,35 +38,55 @@ export namespace ModuleBox {
         /**
          * Width; that is, the length of the edges parallel to the X axis. Default is 1.
          */
+        @Property({ 
+            description: "Width; that is, the length of the edges parallel to the X axis. Default is 1.",
+            min:0
+        })
         readonly width : number
 
         /**
          * Height; that is, the length of the edges parallel to the Y axis. Default is 1.
-         */
+         */ 
+        @Property({ 
+            description: "Height; that is, the length of the edges parallel to the Y axis. Default is 1.",
+            min:0
+        })
         readonly height : number
 
         /**
          * Depth; that is, the length of the edges parallel to the Z axis. Default is 1.
          */
-        @Property({ description: "Depth; that is, the length of the edges parallel to the Z axis. Default is 1." })
+        @Property({ 
+            description: "Depth; that is, the length of the edges parallel to the Z axis. Default is 1.",
+            min:0
+        })
         readonly depth : number
 
         /**
          * Number of segmented rectangular faces along the width of the sides. Default is 10.
          */
-        @Property({ description: "Number of segmented rectangular faces along the width of the sides. Default is 10." })
+        @Property({ 
+            description: "Number of segmented rectangular faces along the width of the sides. Default is 10.",
+            min:0
+        })
         readonly widthCount : number
 
         /**
          * Number of segmented rectangular faces along the height of the sides. Default is 10.
          */
-        @Property({ description: "Number of segmented rectangular faces along the height of the sides. Default is 10." })
+        @Property({ 
+            description: "Number of segmented rectangular faces along the height of the sides. Default is 10.",
+            min:0
+        })
         readonly heightCount : number
 
         /**
          * Number of segmented rectangular faces along the depth of the sides. Defaults to 10.
          */
-        @Property({ description: "Number of segmented rectangular faces along the depth of the sides. Defaults to 10." })
+        @Property({ 
+            description: "Number of segmented rectangular faces along the depth of the sides. Defaults to 10.",
+            min:0
+        })
         readonly depthCount : number
 
 

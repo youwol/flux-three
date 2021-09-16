@@ -95,24 +95,27 @@ export namespace ModuleStandardMaterial {
         emitMaterial( configuration: PersistentData, context: Context){
 
             let side = DoubleSide
-            if(configuration.side=="FrontSize")
+            if(configuration.advanced.side=="FrontSize")
                 side = FrontSide
         
-            if(configuration.side=="BackSide")
+            if(configuration.advanced.side=="BackSide")
                 side = BackSide
 
             let properties = { 
-                transparent:        configuration.transparent,
-                opacity:            configuration.opacity,
-                depthTest:          configuration.depthTest,
-                depthWrite:         configuration.depthWrite,
-                visible:            configuration.visible,
+                transparent:        configuration.visibility.transparent,
+                opacity:            configuration.visibility.opacity,
+                depthTest:          configuration.advanced.depthTest,
+                depthWrite:         configuration.advanced.depthWrite,
+                visible:            configuration.visibility.visible,
                 side:               side,
                 color:              configuration.color.includes("0x") ? parseInt(configuration.color) : new Color(configuration.color),
-                emissive:           configuration.emissive.includes("0x") ? parseInt(configuration.emissive) : new Color(configuration.emissive),
-                roughness:          configuration.roughness,
-                metalness:          configuration.metalness,
-                flatShading:        configuration.flatShading,
+                emissive:           configuration.shading.emissive.includes("0x") 
+                    ? parseInt(configuration.shading.emissive) 
+                    : new Color(configuration.shading.emissive),
+                emissiveIntensity:  configuration.shading.emissiveIntensity,
+                roughness:          configuration.shading.roughness,
+                metalness:          configuration.shading.metalness,
+                flatShading:        configuration.shading.flatShading,
                 wireframe:          configuration.wireframe,
                 wireframeLinewidth: configuration.wireframeLinewidth 
             }

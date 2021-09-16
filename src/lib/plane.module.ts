@@ -38,6 +38,7 @@ export namespace ModulePlane {
          */
         @Property({ 
             description: "Width along the X axis. Default is 1.",
+            min: 0
         })
         readonly width:  number
 
@@ -46,6 +47,7 @@ export namespace ModulePlane {
          */
         @Property({ 
             description: "Height along the Y axis. Default is 1.",
+            min: 0
         })
         readonly height:  number
 
@@ -54,7 +56,8 @@ export namespace ModulePlane {
          */
         @Property({ 
             description: "Default is 1",
-            type:"integer"
+            type:"integer",
+            min: 1
         })
         readonly widthCount:  number
 
@@ -63,7 +66,8 @@ export namespace ModulePlane {
          */
         @Property({ 
             description: " Default is 1",
-            type:"integer"
+            type:"integer",
+            min: 1
         })
         readonly heightCount:  number
 

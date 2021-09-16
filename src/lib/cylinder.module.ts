@@ -35,31 +35,46 @@ export namespace ModuleCylinder {
         /**
          * Radius of the cylinder at the top. Default is 1.
          */
-        @Property({ description: "Radius of the cylinder at the top. Default is 1." })
+        @Property({ 
+            description: "Radius of the cylinder at the top. Default is 1.",
+            min: 0
+        })
         readonly radiusTop : number
 
         /**
          * Radius of the cylinder at the bottom. Default is 1.
          */
-        @Property({ description: "Radius of the cylinder at the bottom. Default is 1." })
+        @Property({ 
+            description: "Radius of the cylinder at the bottom. Default is 1.",
+            min: 0
+        })
         readonly radiusBottom : number
 
         /**
          * Height of the cylinder. Default is 1.
          */
-        @Property({ description: "Height of the cylinder. Default is 1." })
+        @Property({ 
+            description: "Height of the cylinder. Default is 1.",
+            min: 0
+        })
         readonly height : number
 
         /**
          * Number of segmented faces around the circumference of the cylinder. Default is 8
          */
-        @Property({ description: "Number of segmented faces around the circumference of the cylinder. Default is 8" })
+        @Property({ 
+            description: "Number of segmented faces around the circumference of the cylinder. Default is 8",
+            min: 0
+        })
         readonly radialCount : number
 
         /**
          *  Number of rows of faces along the height of the cylinder. Default is 1.
          */
-        @Property({ description: " Number of rows of faces along the height of the cylinder. Default is 1." })
+        @Property({ 
+            description: " Number of rows of faces along the height of the cylinder. Default is 1.",
+            min: 0
+        })
         readonly heightCount : number
 
         constructor( {radiusTop,radiusBottom, height, radialCount,heightCount, ...others}:
