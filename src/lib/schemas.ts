@@ -1,4 +1,5 @@
 import { Property, Schema } from "@youwol/flux-core"
+import { BackSide, Color, DoubleSide, FrontSide, MeshStandardMaterial } from "three"
 import { pack } from "./main"
 
 export namespace Schemas {
@@ -135,7 +136,7 @@ export namespace Schemas {
     export class SimpleObject3DConfiguration extends Object3DConfiguration {
 
         /**
-         * If true, the configuration saved is used to emit the object as soon as 
+         * If true, the this saved is used to emit the object as soon as 
          * the module is created.
          * 
          * If false, the object creation will only be triggered when an incoming messages
@@ -315,5 +316,36 @@ export namespace Schemas {
                 this.advanced = new MaterialAdvancedConfiguration(advanced)
 
         }
+
+        toMaterial(){
+            
+            let side = DoubleSide
+            if(this.advanced.side=="FrontSize")
+                side = FrontSide
+        
+            if(this.advanced.side=="BackSide")
+                side = BackSide
+    
+            let properties = { 
+                transparent:        this.visibility.transparent,
+                opacity:            this.visibility.opacity,
+                depthTest:          this.advanced.depthTest,
+                depthWrite:         this.advanced.depthWrite,
+                visible:            this.visibility.visible,
+                side:               side,
+                color:              this.color.includes("0x") ? parseInt(this.color) : new Color(this.color),
+                emissive:           this.shading.emissive.includes("0x") 
+                    ? parseInt(this.shading.emissive) 
+                    : new Color(this.shading.emissive),
+                emissiveIntensity:  this.shading.emissiveIntensity,
+                roughness:          this.shading.roughness,
+                metalness:          this.shading.metalness,
+                flatShading:        this.shading.flatShading,
+                wireframe:          this.wireframe,
+                wireframeLinewidth: this.wireframeLinewidth 
+            }
+            return new MeshStandardMaterial( properties ) 
+        }
     }
+
 }

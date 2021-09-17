@@ -1,7 +1,7 @@
 
 
-import {Property, Flux,BuilderView, ModuleFlux, Pipe, Schema, freeContract, Context } from "@youwol/flux-core"
-import {MeshStandardMaterial, FrontSide, DoubleSide, BackSide, Color} from 'three'
+import {Property, Flux,BuilderView, ModuleFlux, Pipe, Schema, freeContract, Context, expectSome, expectInstanceOf } from "@youwol/flux-core"
+import {MeshStandardMaterial, FrontSide, DoubleSide, BackSide, Color, Mesh} from 'three'
 import { pack } from "./main"
 import { Schemas } from "./schemas"
 
@@ -45,6 +45,11 @@ export namespace ModuleStandardMaterial {
         }
     }
 
+    let contract = expectSome({
+        description: 'One or multiple mesh(es)',
+        when: expectInstanceOf({typeName:'Mesh', Type:Mesh, attNames:['mesh']})
+    })
+
     @Flux({
         pack:           pack,
         namespace:      ModuleStandardMaterial,
@@ -71,8 +76,8 @@ export namespace ModuleStandardMaterial {
             this.addInput({
                 id:"configuration",
                 description: 'Input used to emit dynamic configuration',
-                contract: freeContract(),
-                onTriggered: ( {configuration, context}:{configuration: PersistentData, context: Context}) => {
+                contract: contract,
+                onTriggered: ( {data, configuration, context}:{data:Mesh[], configuration: PersistentData, context: Context}) => {
                     this.emitMaterial(configuration, context)
                 }
             })
@@ -94,33 +99,7 @@ export namespace ModuleStandardMaterial {
 
         emitMaterial( configuration: PersistentData, context: Context){
 
-            let side = DoubleSide
-            if(configuration.advanced.side=="FrontSize")
-                side = FrontSide
-        
-            if(configuration.advanced.side=="BackSide")
-                side = BackSide
-
-            let properties = { 
-                transparent:        configuration.visibility.transparent,
-                opacity:            configuration.visibility.opacity,
-                depthTest:          configuration.advanced.depthTest,
-                depthWrite:         configuration.advanced.depthWrite,
-                visible:            configuration.visibility.visible,
-                side:               side,
-                color:              configuration.color.includes("0x") ? parseInt(configuration.color) : new Color(configuration.color),
-                emissive:           configuration.shading.emissive.includes("0x") 
-                    ? parseInt(configuration.shading.emissive) 
-                    : new Color(configuration.shading.emissive),
-                emissiveIntensity:  configuration.shading.emissiveIntensity,
-                roughness:          configuration.shading.roughness,
-                metalness:          configuration.shading.metalness,
-                flatShading:        configuration.shading.flatShading,
-                wireframe:          configuration.wireframe,
-                wireframeLinewidth: configuration.wireframeLinewidth 
-            }
-            let material = new MeshStandardMaterial( properties )
-            
+            let material = configuration.toMaterial()            
             this.output$.next({data: material, configuration:{}, context})
             context.terminate()
         }
