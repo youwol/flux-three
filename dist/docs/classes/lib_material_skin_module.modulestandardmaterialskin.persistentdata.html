@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Transform3d | @youwol/flux-three</title>
+	<title>PersistentData | @youwol/flux-three</title>
 	<meta name="description" content="Documentation for @youwol/flux-three">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -55,38 +55,37 @@
 					<a href="../modules.html">@youwol/flux-three</a>
 				</li>
 				<li>
-					<a href="../modules/lib_schemas.html">lib/schemas</a>
+					<a href="../modules/lib_material_skin_module.html">lib/material-skin.module</a>
 				</li>
 				<li>
-					<a href="../modules/lib_schemas.schemas.html">Schemas</a>
+					<a href="../modules/lib_material_skin_module.modulestandardmaterialskin.html">ModuleStandardMaterialSkin</a>
 				</li>
 				<li>
-					<a href="lib_schemas.schemas.transform3d.html">Transform3d</a>
+					<a href="lib_material_skin_module.modulestandardmaterialskin.persistentdata.html">PersistentData</a>
 				</li>
 			</ul>
-			<h1>Class Transform3d</h1>
+			<h1>Class PersistentData</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<a href="#persistent-data--🔧" id="persistent-data--🔧" style="color: inherit; text-decoration: none;">
+							<h2>Persistent Data  🔧</h2>
+						</a>
+					</div>
+					<p>Exposed properties are the attributes of this class.</p>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Transform3d</span>
-						<ul class="tsd-hierarchy">
-							<li>
-								<a href="lib_schemas.schemas.translation.html" class="tsd-signature-type" data-tsd-kind="Class">Translation</a>
-							</li>
-							<li>
-								<a href="lib_schemas.schemas.rotation.html" class="tsd-signature-type" data-tsd-kind="Class">Rotation</a>
-							</li>
-							<li>
-								<a href="lib_schemas.schemas.scaling.html" class="tsd-signature-type" data-tsd-kind="Class">Scaling</a>
-							</li>
-						</ul>
+						<span class="target">PersistentData</span>
 					</li>
 				</ul>
 			</section>
@@ -97,15 +96,14 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="lib_schemas.schemas.transform3d.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="lib_material_skin_module.modulestandardmaterialskin.persistentdata.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="lib_schemas.schemas.transform3d.html#x" class="tsd-kind-icon">x</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="lib_schemas.schemas.transform3d.html#y" class="tsd-kind-icon">y</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="lib_schemas.schemas.transform3d.html#z" class="tsd-kind-icon">z</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="lib_material_skin_module.modulestandardmaterialskin.persistentdata.html#material" class="tsd-kind-icon">material</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="lib_material_skin_module.modulestandardmaterialskin.persistentdata.html#object3d" class="tsd-kind-icon">object3D</a></li>
 							</ul>
 						</section>
 					</div>
@@ -117,33 +115,30 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Transform3d<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{ </span>x<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>y<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>z<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="lib_schemas.schemas.transform3d.html" class="tsd-signature-type" data-tsd-kind="Class">Transform3d</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Persistent<wbr>Data<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{ </span>material<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>object3D<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="lib_material_skin_module.modulestandardmaterialskin.persistentdata.html" class="tsd-signature-type" data-tsd-kind="Class">PersistentData</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/youwol/flux-three/blob/7d9a873/src/lib/schemas.ts#L28">src/lib/schemas.ts:28</a></li>
+									<li>Defined in src/lib/material-skin.module.ts:46</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>__namedParameters: <span class="tsd-signature-symbol">{ </span>x<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>y<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>z<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> = ...</span></h5>
+									<h5>__namedParameters: <span class="tsd-signature-symbol">{ </span>material<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>object3D<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> = ...</span></h5>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter">
-											<h5><span class="tsd-flag ts-flagOptional">Optional</span> x<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span></h5>
+											<h5><span class="tsd-flag ts-flagOptional">Optional</span> material<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span></h5>
 										</li>
 										<li class="tsd-parameter">
-											<h5><span class="tsd-flag ts-flagOptional">Optional</span> y<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span></h5>
-										</li>
-										<li class="tsd-parameter">
-											<h5><span class="tsd-flag ts-flagOptional">Optional</span> z<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span></h5>
+											<h5><span class="tsd-flag ts-flagOptional">Optional</span> object3D<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span></h5>
 										</li>
 									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="lib_schemas.schemas.transform3d.html" class="tsd-signature-type" data-tsd-kind="Class">Transform3d</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="lib_material_skin_module.modulestandardmaterialskin.persistentdata.html" class="tsd-signature-type" data-tsd-kind="Class">PersistentData</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -151,49 +146,24 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="x" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> x</h3>
-					<div class="tsd-signature tsd-kind-icon">x<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="material" class="tsd-anchor"></a>
+					<h3>material</h3>
+					<div class="tsd-signature tsd-kind-icon">material<span class="tsd-signature-symbol">:</span> <a href="lib_schemas.schemas.standardmaterialconfiguration.html" class="tsd-signature-type" data-tsd-kind="Class">StandardMaterialConfiguration</a><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/7d9a873/src/lib/schemas.ts#L16">src/lib/schemas.ts:16</a></li>
+							<li>Defined in src/lib/material-skin.module.ts:46</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Transformation related to the X-axis</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="y" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> y</h3>
-					<div class="tsd-signature tsd-kind-icon">y<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="object3d" class="tsd-anchor"></a>
+					<h3>object3D</h3>
+					<div class="tsd-signature tsd-kind-icon">object3D<span class="tsd-signature-symbol">:</span> <a href="lib_schemas.schemas.object3dconfiguration.html" class="tsd-signature-type" data-tsd-kind="Class">Object3DConfiguration</a><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/7d9a873/src/lib/schemas.ts#L22">src/lib/schemas.ts:22</a></li>
+							<li>Defined in src/lib/material-skin.module.ts:41</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Transformation related to the Y-axis</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="z" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> z</h3>
-					<div class="tsd-signature tsd-kind-icon">z<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/7d9a873/src/lib/schemas.ts#L28">src/lib/schemas.ts:28</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Transformation related to the Z-axis</p>
-						</div>
-					</div>
 				</section>
 			</section>
 		</div>
@@ -227,8 +197,13 @@
 					<li class=" tsd-kind-module">
 						<a href="../modules/lib_main.html">lib/main</a>
 					</li>
-					<li class=" tsd-kind-module">
+					<li class="current tsd-kind-module">
 						<a href="../modules/lib_material_skin_module.html">lib/material-<wbr>skin.module</a>
+						<ul>
+							<li class="current tsd-kind-namespace tsd-parent-kind-module">
+								<a href="../modules/lib_material_skin_module.modulestandardmaterialskin.html">Module<wbr>Standard<wbr>Material<wbr>Skin</a>
+							</li>
+						</ul>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/lib_plane_module.html">lib/plane.module</a>
@@ -236,13 +211,8 @@
 					<li class=" tsd-kind-module">
 						<a href="../modules/lib_ray_caster_plugin.html">lib/ray-<wbr>caster.plugin</a>
 					</li>
-					<li class="current tsd-kind-module">
+					<li class=" tsd-kind-module">
 						<a href="../modules/lib_schemas.html">lib/schemas</a>
-						<ul>
-							<li class="current tsd-kind-namespace tsd-parent-kind-module">
-								<a href="../modules/lib_schemas.schemas.html">Schemas</a>
-							</li>
-						</ul>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/lib_sphere_module.html">lib/sphere.module</a>
@@ -267,56 +237,26 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class tsd-parent-kind-namespace">
-						<a href="lib_schemas.schemas.globaltransform.html" class="tsd-kind-icon">Global<wbr>Transform</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-namespace">
-						<a href="lib_schemas.schemas.materialadvancedconfiguration.html" class="tsd-kind-icon">Material<wbr>Advanced<wbr>Configuration</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-namespace">
-						<a href="lib_schemas.schemas.materialshadingconfiguration.html" class="tsd-kind-icon">Material<wbr>Shading<wbr>Configuration</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-namespace">
-						<a href="lib_schemas.schemas.materialvisibilityconfiguration.html" class="tsd-kind-icon">Material<wbr>Visibility<wbr>Configuration</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-namespace">
-						<a href="lib_schemas.schemas.object3dconfiguration.html" class="tsd-kind-icon">Object3DConfiguration</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-namespace">
-						<a href="lib_schemas.schemas.rotation.html" class="tsd-kind-icon">Rotation</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-namespace">
-						<a href="lib_schemas.schemas.scaling.html" class="tsd-kind-icon">Scaling</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-namespace">
-						<a href="lib_schemas.schemas.simpleobject3dconfiguration.html" class="tsd-kind-icon">Simple<wbr>Object3DConfiguration</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-namespace">
-						<a href="lib_schemas.schemas.standardmaterialconfiguration.html" class="tsd-kind-icon">Standard<wbr>Material<wbr>Configuration</a>
+						<a href="lib_material_skin_module.modulestandardmaterialskin.module.html" class="tsd-kind-icon">Module</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-namespace">
-						<a href="lib_schemas.schemas.transform3d.html" class="tsd-kind-icon">Transform3d</a>
+						<a href="lib_material_skin_module.modulestandardmaterialskin.persistentdata.html" class="tsd-kind-icon">Persistent<wbr>Data</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="lib_schemas.schemas.transform3d.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="lib_material_skin_module.modulestandardmaterialskin.persistentdata.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="lib_schemas.schemas.transform3d.html#x" class="tsd-kind-icon">x</a>
+								<a href="lib_material_skin_module.modulestandardmaterialskin.persistentdata.html#material" class="tsd-kind-icon">material</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="lib_schemas.schemas.transform3d.html#y" class="tsd-kind-icon">y</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="lib_schemas.schemas.transform3d.html#z" class="tsd-kind-icon">z</a>
+								<a href="lib_material_skin_module.modulestandardmaterialskin.persistentdata.html#object3d" class="tsd-kind-icon">object3D</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-class tsd-parent-kind-namespace">
-						<a href="lib_schemas.schemas.translation.html" class="tsd-kind-icon">Translation</a>
-					</li>
 				</ul>
 			</nav>
 		</div>
