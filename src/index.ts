@@ -7,6 +7,7 @@ export * from './lib/sphere.module';
 export * from './lib/box.module';
 export * from './lib/cylinder.module';
 export * from './lib/plane.module';
+export * from './lib/material-skin.module';
 export * from './lib/standard-material.module';
 export * from './lib/buffer-geometry.module';
 export * from './lib/spotlights.module';
