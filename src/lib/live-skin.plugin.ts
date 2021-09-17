@@ -374,7 +374,9 @@ export namespace PluginLiveSkin {
                     ...{ 
                         body, 
                         color: '#' + (body.material as MeshStandardMaterial).color.getHexString(), 
-                        activated: true
+                        activated: true,
+                        metalness: 0.25,
+                        roughness: 0.1
                     },
                     ...defaultParameters(body)
                 }
