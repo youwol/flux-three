@@ -45,10 +45,6 @@ export namespace ModuleStandardMaterial {
         }
     }
 
-    let contract = expectSome({
-        description: 'One or multiple mesh(es)',
-        when: expectInstanceOf({typeName:'Mesh', Type:Mesh, attNames:['mesh']})
-    })
 
     @Flux({
         pack:           pack,
@@ -76,7 +72,7 @@ export namespace ModuleStandardMaterial {
             this.addInput({
                 id:"configuration",
                 description: 'Input used to emit dynamic configuration',
-                contract: contract,
+                contract: freeContract(),
                 onTriggered: ( {data, configuration, context}:{data:Mesh[], configuration: PersistentData, context: Context}) => {
                     this.emitMaterial(configuration, context)
                 }
