@@ -1,5 +1,5 @@
 import { Scene as FluxScene, BuilderView, Flux, Property, RenderView, Schema, ModuleFlux, 
-    expectSome, expectInstanceOf, Context, createEmptyScene } from '@youwol/flux-core'
+    expectSome, expectInstanceOf, Context, createEmptyScene, freeContract, Pipe } from '@youwol/flux-core'
     
 import { ReplaySubject, Subject } from 'rxjs'
 import { Color, Object3D, PerspectiveCamera, Scene, WebGLRenderer } from 'three'
@@ -65,20 +65,31 @@ export namespace ModuleViewer{
         /**
          * Background color of the viewer, hexadecimal representation
          */
-        @Property({ description: "background color", type: "color" })
-        readonly backgroundColor: string
+        @Property({ 
+            description: "background color", 
+            type: "color" 
+        })
+        readonly backgroundColor: string = "0xFFFFFF"
 
         /**
          * Ambient light intensity
          */
-        @Property({ description: "ambient light intensity", type: "float" })
-        readonly ambientIntensity: number
+        @Property({ 
+            description: "ambient light intensity", 
+            type: "float", 
+        })
+        readonly ambientIntensity: number = 1
 
-        constructor({ backgroundColor, ambientIntensity }:
-            { backgroundColor?: string, ambientIntensity?: number } =
+
+        @Property({
+            description: 'If true exposes camera using dedicated IO'
+        })
+        exposeCamera: boolean = false
+
+        constructor(params:
+            { backgroundColor?: string, ambientIntensity?: number, exposeCamera?:boolean } =
             {}) {
-            this.backgroundColor = backgroundColor ? backgroundColor : "0xFFFFFF"
-            this.ambientIntensity = ambientIntensity ? ambientIntensity : 1
+            Object.assign(this, params)
         }
     }
 
@@ -116,6 +127,8 @@ export namespace ModuleViewer{
     })
     export class Module extends ModuleFlux {
 
+        camera$ : Pipe<PerspectiveCamera>
+        
         pluginsGateway = new PluginsGateway()
         scene: Scene
         camera: PerspectiveCamera 
@@ -147,9 +160,23 @@ export namespace ModuleViewer{
                     this.render(data, context)
                 }
             })
+            if(this.getPersistentData<PersistentData>().exposeCamera){
+                this.addInput({
+                    id:'camera',
+                    description: `Camera.`,
+                    contract: freeContract(),
+                    onTriggered: ({data, configuration, context}) => {
+                        if(!this.camera || data==this.camera)
+                            return
+                        this.camera.copy(data)
+                    }
+                })
+                this.camera$ = this.addOutput() 
+            }
         }
 
         setRenderingDiv(renderingDiv: HTMLDivElement) {
+
             this.init(renderingDiv)
             this.pluginsGateway.renderingDiv$.next(renderingDiv)
         }
@@ -169,9 +196,9 @@ export namespace ModuleViewer{
             camera.aspect = renderingDiv.clientWidth / renderingDiv.clientHeight;
             camera.updateProjectionMatrix();
         }
-
-        init(renderingDiv: HTMLDivElement) {
-
+        
+        init(renderingDiv: HTMLDivElement, camera?: PerspectiveCamera) {
+            
             let config = this.getPersistentData<PersistentData>()
             
             this.camera = new PerspectiveCamera(70, renderingDiv.clientWidth / renderingDiv.clientHeight, 0.01, 1000)
@@ -187,6 +214,12 @@ export namespace ModuleViewer{
             try {
                 const controls = new TrackballControls(this.camera, renderingDiv)
                 this.controls = controls
+                
+                if(this.camera$)
+                    this.controls.addEventListener( 'change', ( event ) => {
+                        this.camera$.next({data:this.camera})
+                    });
+
                 this.pluginsGateway.controls$.next(this.controls)   
                 this.renderer = initializeRenderer({
                     renderingDiv,
@@ -254,7 +287,6 @@ export namespace ModuleViewer{
                 {
                     class:"h-100 v-100",
                     connectedCallback: (div: HTMLDivElement) => {
-
                         div.addEventListener( 
                             'mousedown',
                             (e) => mdle.pluginsGateway.mouseDown$.next(e)
