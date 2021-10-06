@@ -110,6 +110,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="lib_viewer_module.moduleviewer.module.html#factory" class="tsd-kind-icon">Factory</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="lib_viewer_module.moduleviewer.module.html#cache" class="tsd-kind-icon">cache</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="lib_viewer_module.moduleviewer.module.html#camera" class="tsd-kind-icon">camera</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="lib_viewer_module.moduleviewer.module.html#camera_" class="tsd-kind-icon">camera$</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="lib_viewer_module.moduleviewer.module.html#configuration" class="tsd-kind-icon">configuration</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="lib_viewer_module.moduleviewer.module.html#controls" class="tsd-kind-icon">controls</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="lib_viewer_module.moduleviewer.module.html#ctxbeforeinitialization" class="tsd-kind-icon">ctx<wbr>Before<wbr>Initialization</a></li>
@@ -126,6 +127,8 @@
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="lib_viewer_module.moduleviewer.module.html#registeredrenderloopactions" class="tsd-kind-icon">registered<wbr>Render<wbr>Loop<wbr>Actions</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="lib_viewer_module.moduleviewer.module.html#renderer" class="tsd-kind-icon">renderer</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="lib_viewer_module.moduleviewer.module.html#scene" class="tsd-kind-icon">scene</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="lib_viewer_module.moduleviewer.module.html#userdata" class="tsd-kind-icon">user<wbr>Data</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="lib_viewer_module.moduleviewer.module.html#uuid" class="tsd-kind-icon">uuid</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -165,7 +168,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides ModuleFlux.constructor</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/youwol/flux-three/blob/44ac2af/src/lib/viewer.module.ts#L133">src/lib/viewer.module.ts:133</a></li>
+									<li>Defined in <a href="https://github.com/youwol/flux-three/blob/bd26810/src/lib/viewer.module.ts#L146">src/lib/viewer.module.ts:146</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -188,7 +191,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from ModuleFlux.Factory</p>
 						<ul>
-							<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:983</li>
+							<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:984</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -204,7 +207,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from ModuleFlux.cache</p>
 						<ul>
-							<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:1042</li>
+							<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:1048</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -219,7 +222,17 @@
 					<div class="tsd-signature tsd-kind-icon">camera<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">PerspectiveCamera</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/44ac2af/src/lib/viewer.module.ts#L121">src/lib/viewer.module.ts:121</a></li>
+							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/bd26810/src/lib/viewer.module.ts#L134">src/lib/viewer.module.ts:134</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="camera_" class="tsd-anchor"></a>
+					<h3>camera$</h3>
+					<div class="tsd-signature tsd-kind-icon">camera$<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Pipe</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">PerspectiveCamera</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/bd26810/src/lib/viewer.module.ts#L130">src/lib/viewer.module.ts:130</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -230,7 +243,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from ModuleFlux.configuration</p>
 						<ul>
-							<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:1004</li>
+							<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:1010</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -246,7 +259,7 @@
 					<div class="tsd-signature tsd-kind-icon">controls<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/44ac2af/src/lib/viewer.module.ts#L123">src/lib/viewer.module.ts:123</a></li>
+							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/bd26810/src/lib/viewer.module.ts#L136">src/lib/viewer.module.ts:136</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -256,7 +269,7 @@
 					<div class="tsd-signature tsd-kind-icon">ctx<wbr>Before<wbr>Initialization<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Context</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/44ac2af/src/lib/viewer.module.ts#L133">src/lib/viewer.module.ts:133</a></li>
+							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/bd26810/src/lib/viewer.module.ts#L146">src/lib/viewer.module.ts:146</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -267,7 +280,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from ModuleFlux.environment</p>
 						<ul>
-							<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:996</li>
+							<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:1002</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -287,7 +300,7 @@
 					<div class="tsd-signature tsd-kind-icon">flux<wbr>Scene<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Scene</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Object3D</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/44ac2af/src/lib/viewer.module.ts#L127">src/lib/viewer.module.ts:127</a></li>
+							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/bd26810/src/lib/viewer.module.ts#L140">src/lib/viewer.module.ts:140</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -298,7 +311,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from ModuleFlux.helpers</p>
 						<ul>
-							<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:1010</li>
+							<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:1016</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -322,7 +335,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from ModuleFlux.inputSlots</p>
 						<ul>
-							<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:1017</li>
+							<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:1023</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -341,7 +354,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from ModuleFlux.journals</p>
 						<ul>
-							<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:1053</li>
+							<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:1059</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -365,7 +378,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from ModuleFlux.logChannels</p>
 						<ul>
-							<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:1036</li>
+							<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:1042</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -385,7 +398,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from ModuleFlux.logs$</p>
 						<ul>
-							<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:1029</li>
+							<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:1035</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -401,7 +414,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from ModuleFlux.moduleId</p>
 						<ul>
-							<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:988</li>
+							<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:989</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -417,7 +430,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from ModuleFlux.outputSlots</p>
 						<ul>
-							<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:1024</li>
+							<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:1030</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -435,7 +448,7 @@
 					<div class="tsd-signature tsd-kind-icon">plugins<wbr>Gateway<span class="tsd-signature-symbol">:</span> <a href="lib_viewer_module.moduleviewer.pluginsgateway.html" class="tsd-signature-type" data-tsd-kind="Class">PluginsGateway</a><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/44ac2af/src/lib/viewer.module.ts#L119">src/lib/viewer.module.ts:119</a></li>
+							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/bd26810/src/lib/viewer.module.ts#L132">src/lib/viewer.module.ts:132</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -445,7 +458,7 @@
 					<div class="tsd-signature tsd-kind-icon">registered<wbr>Render<wbr>Loop<wbr>Actions<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/44ac2af/src/lib/viewer.module.ts#L125">src/lib/viewer.module.ts:125</a></li>
+							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/bd26810/src/lib/viewer.module.ts#L138">src/lib/viewer.module.ts:138</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -489,7 +502,7 @@
 					<div class="tsd-signature tsd-kind-icon">renderer<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">WebGLRenderer</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/44ac2af/src/lib/viewer.module.ts#L122">src/lib/viewer.module.ts:122</a></li>
+							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/bd26810/src/lib/viewer.module.ts#L135">src/lib/viewer.module.ts:135</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -499,9 +512,44 @@
 					<div class="tsd-signature tsd-kind-icon">scene<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Scene</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/44ac2af/src/lib/viewer.module.ts#L120">src/lib/viewer.module.ts:120</a></li>
+							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/bd26810/src/lib/viewer.module.ts#L133">src/lib/viewer.module.ts:133</a></li>
 						</ul>
 					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external">
+					<a name="userdata" class="tsd-anchor"></a>
+					<h3>user<wbr>Data</h3>
+					<div class="tsd-signature tsd-kind-icon">user<wbr>Data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol"> = ...</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from ModuleFlux.userData</p>
+						<ul>
+							<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:1064</li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-index-signature">
+								<h5><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">unknown</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external">
+					<a name="uuid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> uuid</h3>
+					<div class="tsd-signature tsd-kind-icon">uuid<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = ...</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from ModuleFlux.uuid</p>
+						<ul>
+							<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:994</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>module uuid</p>
+						</div>
+					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -517,7 +565,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from ModuleFlux.addInput</p>
 								<ul>
-									<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:1148</li>
+									<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:1161</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -599,7 +647,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from ModuleFlux.addJournal</p>
 								<ul>
-									<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:1231</li>
+									<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:1244</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -644,7 +692,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/youwol/flux-three/blob/44ac2af/src/lib/viewer.module.ts#L208">src/lib/viewer.module.ts:208</a></li>
+									<li>Defined in <a href="https://github.com/youwol/flux-three/blob/bd26810/src/lib/viewer.module.ts#L241">src/lib/viewer.module.ts:241</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -668,7 +716,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from ModuleFlux.addOutput</p>
 								<ul>
-									<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:1207</li>
+									<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:1220</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -749,7 +797,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/youwol/flux-three/blob/44ac2af/src/lib/viewer.module.ts#L157">src/lib/viewer.module.ts:157</a></li>
+									<li>Defined in <a href="https://github.com/youwol/flux-three/blob/bd26810/src/lib/viewer.module.ts#L184">src/lib/viewer.module.ts:184</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -797,7 +845,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from ModuleFlux.getInputSlot</p>
 								<ul>
-									<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:1100</li>
+									<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:1113</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -825,7 +873,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from ModuleFlux.getOutputSlot</p>
 								<ul>
-									<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:1108</li>
+									<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:1121</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -859,7 +907,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from ModuleFlux.getPersistentData</p>
 								<ul>
-									<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:1132</li>
+									<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:1145</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -892,7 +940,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from ModuleFlux.getSlot</p>
 								<ul>
-									<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:1092</li>
+									<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:1105</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -913,19 +961,22 @@
 					<a name="init" class="tsd-anchor"></a>
 					<h3>init</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">init<span class="tsd-signature-symbol">(</span>renderingDiv<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLDivElement</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">init<span class="tsd-signature-symbol">(</span>renderingDiv<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLDivElement</span>, camera<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">PerspectiveCamera</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/youwol/flux-three/blob/44ac2af/src/lib/viewer.module.ts#L173">src/lib/viewer.module.ts:173</a></li>
+									<li>Defined in <a href="https://github.com/youwol/flux-three/blob/bd26810/src/lib/viewer.module.ts#L200">src/lib/viewer.module.ts:200</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>renderingDiv: <span class="tsd-signature-type">HTMLDivElement</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> camera: <span class="tsd-signature-type">PerspectiveCamera</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -943,7 +994,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from ModuleFlux.log</p>
 								<ul>
-									<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:1120</li>
+									<li>Defined in node_modules/@youwol/flux-core/src/lib/models/models-base.ts:1133</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -976,7 +1027,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/youwol/flux-three/blob/44ac2af/src/lib/viewer.module.ts#L216">src/lib/viewer.module.ts:216</a></li>
+									<li>Defined in <a href="https://github.com/youwol/flux-three/blob/bd26810/src/lib/viewer.module.ts#L249">src/lib/viewer.module.ts:249</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -999,7 +1050,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/youwol/flux-three/blob/44ac2af/src/lib/viewer.module.ts#L161">src/lib/viewer.module.ts:161</a></li>
+									<li>Defined in <a href="https://github.com/youwol/flux-three/blob/bd26810/src/lib/viewer.module.ts#L188">src/lib/viewer.module.ts:188</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1022,7 +1073,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/youwol/flux-three/blob/44ac2af/src/lib/viewer.module.ts#L222">src/lib/viewer.module.ts:222</a></li>
+									<li>Defined in <a href="https://github.com/youwol/flux-three/blob/bd26810/src/lib/viewer.module.ts#L255">src/lib/viewer.module.ts:255</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1048,7 +1099,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/youwol/flux-three/blob/44ac2af/src/lib/viewer.module.ts#L165">src/lib/viewer.module.ts:165</a></li>
+									<li>Defined in <a href="https://github.com/youwol/flux-three/blob/bd26810/src/lib/viewer.module.ts#L192">src/lib/viewer.module.ts:192</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1071,7 +1122,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/youwol/flux-three/blob/44ac2af/src/lib/viewer.module.ts#L152">src/lib/viewer.module.ts:152</a></li>
+									<li>Defined in <a href="https://github.com/youwol/flux-three/blob/bd26810/src/lib/viewer.module.ts#L178">src/lib/viewer.module.ts:178</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1172,6 +1223,9 @@
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="lib_viewer_module.moduleviewer.module.html#camera" class="tsd-kind-icon">camera</a>
 							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="lib_viewer_module.moduleviewer.module.html#camera_" class="tsd-kind-icon">camera$</a>
+							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external">
 								<a href="lib_viewer_module.moduleviewer.module.html#configuration" class="tsd-kind-icon">configuration</a>
 							</li>
@@ -1219,6 +1273,12 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="lib_viewer_module.moduleviewer.module.html#scene" class="tsd-kind-icon">scene</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external">
+								<a href="lib_viewer_module.moduleviewer.module.html#userdata" class="tsd-kind-icon">user<wbr>Data</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external">
+								<a href="lib_viewer_module.moduleviewer.module.html#uuid" class="tsd-kind-icon">uuid</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external">
 								<a href="lib_viewer_module.moduleviewer.module.html#addinput" class="tsd-kind-icon">add<wbr>Input</a>
