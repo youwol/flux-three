@@ -131,15 +131,30 @@ export namespace ModuleStandardMaterialSkin {
         process( meshes: Mesh[], configuration: PersistentData, context: Context){
 
             let material = configuration.material.toMaterial()
-            let newMeshes = meshes.map( mesh => {
+            let toId = (base,i) => meshes.length == 1 ? base : `${base}_${i}`
+
+            let newMeshes = meshes.map( (mesh,i) => {
                 return createFluxThreeObject3D( {
                     object: new Mesh(mesh.geometry, material),
+                    id: toId(configuration.object3D.objectId, i),
+                    displayName: toId(configuration.object3D.objectName, i),
+                    transform: configuration.object3D.transform
+                })
+            })
+            if(newMeshes.length == 1 ){
+                this.output$.next({data: newMeshes.length == 1 ? newMeshes : newMeshes[0], configuration:{}, context})
+            } else {
+                let group = new Group()
+                newMeshes.forEach( m => group.add(m))
+                let output = createFluxThreeObject3D( {
+                    object: group,
                     id: configuration.object3D.objectId,
                     displayName: configuration.object3D.objectName,
                     transform: configuration.object3D.transform
                 })
-            })
-            this.output$.next({data: newMeshes.length == 1 ? newMeshes : newMeshes[0], configuration:{}, context})
+                this.output$.next({data: output, configuration:{}, context})
+            }
+            
             context.terminate()
         }
     }
