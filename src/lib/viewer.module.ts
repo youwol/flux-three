@@ -69,7 +69,7 @@ export namespace ModuleViewer{
             description: "background color", 
             type: "color" 
         })
-        readonly backgroundColor: string = "0xFFFFFF"
+        readonly backgroundColor: string = "#888888"
 
         /**
          * Ambient light intensity
