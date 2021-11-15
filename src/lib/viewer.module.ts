@@ -1,12 +1,14 @@
-import { Scene as FluxScene, BuilderView, Flux, Property, RenderView, Schema, ModuleFlux, 
-    expectSome, expectInstanceOf, Context, createEmptyScene, freeContract, Pipe } from '@youwol/flux-core'
-    
-import { ReplaySubject, Subject } from 'rxjs'
-import { Color, Object3D, PerspectiveCamera, Scene, WebGLRenderer } from 'three'
-import * as TrackballControls from 'three-trackballcontrols'
-import { render, VirtualDOM} from '@youwol/flux-view'
+import {
+    Scene as FluxScene, BuilderView, Flux, Property, RenderView, Schema, ModuleFlux,
+    expectSome, expectInstanceOf, Context, createEmptyScene, freeContract, Pipe
+} from '@youwol/flux-core'
 
-import{pack} from './main'
+import { ReplaySubject, Subject } from 'rxjs'
+import { AmbientLight, Color, DirectionalLight, HemisphereLight, Light, Object3D, PerspectiveCamera, PointLight, RectAreaLight, Scene, SpotLight, WebGLRenderer } from 'three'
+import * as TrackballControls from 'three-trackballcontrols'
+import { render, VirtualDOM } from '@youwol/flux-view'
+
+import { pack } from './main'
 import { createDefaultLights, fitSceneToContentIfNeeded, getSceneBoundingBox, initializeRenderer } from './utils'
 
 /**
@@ -21,7 +23,7 @@ Viewer for [three.js](https://threejs.org/) [scenes](https://threejs.org/docs/#a
  -    [three.js](https://threejs.org/): the three. js library, on top of which is built this module 
  -    [three scene](https://threejs.org/docs/#api/en/scenes/Scene): the scene representation for three.js
  */
-export namespace ModuleViewer{
+export namespace ModuleViewer {
 
     type LightingFunction = (params: {
         AmbientLight: new () => AmbientLight,
@@ -53,7 +55,7 @@ return ({AmbientLight, HemisphereLight, DirectionalLight, PointLight, SpotLight,
         scene$ = new ReplaySubject<Scene>(1)
 
         /** When flux scene is updated */
-        fluxScene$ = new ReplaySubject<{old: FluxScene<Object3D>, updated: FluxScene<Object3D>}>(1)
+        fluxScene$ = new ReplaySubject<{ old: FluxScene<Object3D>, updated: FluxScene<Object3D> }>(1)
 
         /* Rendering div updated */
         renderingDiv$ = new ReplaySubject<HTMLDivElement>(1)
@@ -61,10 +63,10 @@ return ({AmbientLight, HemisphereLight, DirectionalLight, PointLight, SpotLight,
         /* Control updated */
         controls$ = new ReplaySubject<TrackballControls>(1)
 
-        mouseDown$ = new Subject<MouseEvent>() 
-        mouseMove$  = new Subject<MouseEvent>() 
-        mouseUp$  = new Subject<MouseEvent>() 
-        click$  = new Subject<MouseEvent>() 
+        mouseDown$ = new Subject<MouseEvent>()
+        mouseMove$ = new Subject<MouseEvent>()
+        mouseUp$ = new Subject<MouseEvent>()
+        click$ = new Subject<MouseEvent>()
     }
 
 
@@ -81,9 +83,9 @@ return ({AmbientLight, HemisphereLight, DirectionalLight, PointLight, SpotLight,
         /**
          * Background color of the viewer, hexadecimal representation
          */
-        @Property({ 
-            description: "background color", 
-            type: "color" 
+        @Property({
+            description: "background color",
+            type: "color"
         })
         readonly backgroundColor: string = "#888888"
 
@@ -115,7 +117,7 @@ return ({AmbientLight, HemisphereLight, DirectionalLight, PointLight, SpotLight,
     let contract = expectSome({
         when: expectInstanceOf({
             typeName: 'Object3D',
-            Type:Object3D,
+            Type: Object3D,
             attNames: ["object", "mesh"]
         })
     })
@@ -148,32 +150,32 @@ return ({AmbientLight, HemisphereLight, DirectionalLight, PointLight, SpotLight,
 
         pluginsGateway = new PluginsGateway()
         scene: Scene
-        camera: PerspectiveCamera 
+        camera: PerspectiveCamera
         renderer: WebGLRenderer
         controls: TrackballControls
 
-        registeredRenderLoopActions: {[key:string]: {action:(Module)=>void, instance: unknown}} = {}
-        
-        fluxScene: FluxScene<Object3D> = createEmptyScene({
-            id:(obj: Object3D ) => obj.name,
-            add:(obj: Object3D ) => this.addObject(obj),
-            remove:(obj: Object3D ) => this.removeObject(obj),  
-            ready:() => this.scene != undefined
-        })
-        ctxBeforeInitialization : Context
+        registeredRenderLoopActions: { [key: string]: { action: (Module) => void, instance: unknown } } = {}
 
-        constructor( params ){
+        fluxScene: FluxScene<Object3D> = createEmptyScene({
+            id: (obj: Object3D) => obj.name,
+            add: (obj: Object3D) => this.addObject(obj),
+            remove: (obj: Object3D) => this.removeObject(obj),
+            ready: () => this.scene != undefined
+        })
+        ctxBeforeInitialization: Context
+
+        constructor(params) {
             super(params)
 
             this.ctxBeforeInitialization = new Context("Before renderer initialized", {}, this.logChannels)
-            this.addJournal({title:"Before renderer initialized", entryPoint:this.ctxBeforeInitialization})
+            this.addJournal({ title: "Before renderer initialized", entryPoint: this.ctxBeforeInitialization })
 
             this.addInput({
-                id:'input',
+                id: 'input',
                 description: `Add 3D objects from incoming messages to the scene. If an object with same
                 id is already in the scene it is replaced by the incoming one.`,
                 contract: contract,
-                onTriggered: ({data, configuration, context}) => {
+                onTriggered: ({ data, configuration, context }) => {
                     this.render(data, context)
                 }
             })
@@ -200,11 +202,11 @@ return ({AmbientLight, HemisphereLight, DirectionalLight, PointLight, SpotLight,
             camera.aspect = renderingDiv.clientWidth / renderingDiv.clientHeight;
             camera.updateProjectionMatrix();
         }
-        
+
         init(renderingDiv: HTMLDivElement, camera?: PerspectiveCamera) {
-            
+
             let config = this.getPersistentData<PersistentData>()
-            
+
             this.camera = new PerspectiveCamera(70, renderingDiv.clientWidth / renderingDiv.clientHeight, 0.01, 1000)
             this.camera.position.z = 10
 
@@ -219,7 +221,7 @@ return ({AmbientLight, HemisphereLight, DirectionalLight, PointLight, SpotLight,
                 const controls = new TrackballControls(this.camera, renderingDiv)
                 this.controls = controls
 
-                this.pluginsGateway.controls$.next(this.controls)   
+                this.pluginsGateway.controls$.next(this.controls)
                 this.renderer = initializeRenderer({
                     renderingDiv,
                     scene: this.scene,
@@ -233,76 +235,76 @@ return ({AmbientLight, HemisphereLight, DirectionalLight, PointLight, SpotLight,
                 console.error("Creation of webGl context failed")
                 this.renderer = undefined
             }
-            
+
             this.render(this.fluxScene.inCache, this.ctxBeforeInitialization)
         }
 
-        addObject( object : Object3D ){
+        addObject(object: Object3D) {
             // a pure instance of Object3D can be used to remove an object from the scene
-            if( object.type != "Object3D" ){
+            if (object.type != "Object3D") {
                 this.scene.add(object);
                 this.pluginsGateway.scene$.next(this.scene)
             }
         }
 
-        removeObject( object : Object3D ){
+        removeObject(object: Object3D) {
 
             this.scene.remove(object)
             this.pluginsGateway.scene$.next(this.scene)
         }
 
-        render( objects: Array<Object3D>, context: Context ){
+        render(objects: Array<Object3D>, context: Context) {
 
             let oldScene = this.fluxScene
 
             let fromBBox = this.scene && getSceneBoundingBox(this.scene)
             this.fluxScene = this.fluxScene.add(objects)
-            fitSceneToContentIfNeeded(fromBBox, this.scene, this.camera, this.controls) 
+            fitSceneToContentIfNeeded(fromBBox, this.scene, this.camera, this.controls)
 
-            this.pluginsGateway.fluxScene$.next({old: oldScene, updated: this.fluxScene})
+            this.pluginsGateway.fluxScene$.next({ old: oldScene, updated: this.fluxScene })
 
-            if(!this.renderer)
-                return 
+            if (!this.renderer)
+                return
 
             this.renderer.render(this.scene, this.camera);
-    
-            context.info("Scene updated", {
-                scene:this.scene, 
-                renderer: this.renderer, 
-                fluxScene: { oldScene, newScene: this.fluxScene}
-            })    
 
-            if(context != this.ctxBeforeInitialization)
-                context.terminate()     
+            context.info("Scene updated", {
+                scene: this.scene,
+                renderer: this.renderer,
+                fluxScene: { oldScene, newScene: this.fluxScene }
+            })
+
+            if (context != this.ctxBeforeInitialization)
+                context.terminate()
         }
     }
 
-    
-    export function renderHtmlElement(mdle: Module) : HTMLElement {
-        
-        let vDOM : VirtualDOM = {
-            class:"h-100 v-100",
-            children:[
+
+    export function renderHtmlElement(mdle: Module): HTMLElement {
+
+        let vDOM: VirtualDOM = {
+            class: "h-100 v-100",
+            children: [
                 {
-                    class:"h-100 v-100",
+                    class: "h-100 v-100",
                     connectedCallback: (div: HTMLDivElement) => {
-                        div.addEventListener( 
+                        div.addEventListener(
                             'mousedown',
                             (e) => mdle.pluginsGateway.mouseDown$.next(e)
-                            , false )
-                        div.addEventListener( 
+                            , false)
+                        div.addEventListener(
                             'click',
                             (e) => mdle.pluginsGateway.click$.next(e)
-                            , false )
-                        div.addEventListener( 
+                            , false)
+                        div.addEventListener(
                             'mousemove',
                             (e) => mdle.pluginsGateway.mouseMove$.next(e)
-                            , false )
-                        
-                        div.addEventListener( 
+                            , false)
+
+                        div.addEventListener(
                             'mouseup',
                             (e) => mdle.pluginsGateway.mouseUp$.next(e)
-                            , false )
+                            , false)
                         setTimeout(() => {
                             mdle.setRenderingDiv(div)
                             let observer = new ResizeObserver(() => mdle.resize(div))
