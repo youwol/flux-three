@@ -831,6 +831,21 @@
   resolved "https://registry.yarnpkg.com/@youwol/flux-view/-/flux-view-0.0.8.tgz#db06d9a01dc568b75f95c400447c5b649c1419d6"
   integrity sha512-Q4mEPqqY3/eiaQhybppdyonVJG8dcUwH4ku0zSyYupQYdAsgASSmp9xfyhvfbcqUmKpHItToHvYg3PFk9vlPxA==
 
+"@youwol/fv-button@0.x":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@youwol/fv-button/-/fv-button-0.0.3.tgz#c98f13d748b07ba04e8599f0016403cf3fcb54bc"
+  integrity sha512-+1h4HbH3NT5FVfv0ps5wCDtgGgicNF0ZXMbG74K42JbUVrAyZHmSlIaXiwfkdG53r9jKHH8/b1wvLobk9Daopg==
+
+"@youwol/fv-group@0.x":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@youwol/fv-group/-/fv-group-0.0.4.tgz#c2f0569fe4a2b8f008c2ec4224a59a1ab84f51e3"
+  integrity sha512-hkHwJP/zoQfGPkdtLAOAhw10wA26gqhxCPBEXcx2uDAHYyHkCSuf3j08rqPDt54jncYlsOWxiopd8D+XewIaDw==
+
+"@youwol/fv-input@0.x":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@youwol/fv-input/-/fv-input-0.0.5.tgz#cd91d7de8a09db406299f3eaec46d5bfb91a1561"
+  integrity sha512-/6uaok86L7i3kZl/sHAXDkE1QQ7QGphqRZjjkFpyOpkzb3iT1SZyDSyblfuZ5E7YfglCLRnTlVEpeJkVLMFK4g==
+
 abab@^2.0.3, abab@^2.0.5:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/abab/-/abab-2.0.5.tgz#c0b678fb32d60fc1219c784d6a826fe385aeb79a"

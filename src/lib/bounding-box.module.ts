@@ -47,10 +47,9 @@ export namespace ModuleBoundingBox {
             super()
         }
     }
-
-
+    
     let inputExpectation = expectSome({
-        description:'Object3D',
+        //description:'Object3D',
         when:expectInstanceOf({
             typeName:'Object3D',
             Type: Object3D,
