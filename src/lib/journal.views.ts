@@ -12,9 +12,9 @@ function createSceneWithObject(obj: Object3D, renderingDiv: HTMLDivElement){
     let scene = new Scene()
     scene.background = new Color(0xFFFFFF);    
     scene.add(obj);                    
-    scene.add(createDefaultLights(0.5)) 
     renderingDiv.parentNode["threeScene"] = scene  
     try{
+    scene.add(createDefaultLights([new AmbientLight(0xffffff, 0.5)]))
         initializeRenderer({
             controls: new TrackballControls(camera, renderingDiv),
             camera,

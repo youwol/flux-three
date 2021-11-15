@@ -96,9 +96,9 @@ export function fitSceneToContent(scene: Scene, camera: PerspectiveCamera, contr
     controls.update()
 }
 
-export function createDefaultLights(intensity ) {
+export function createDefaultLights(lights: Light[]) {
     const g = new Group()
-    g.add( new AmbientLight(0xffffff, intensity) )
+    lights.forEach(light => g.add(light))
     return g
 }
 
