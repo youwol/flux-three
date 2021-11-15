@@ -84,10 +84,9 @@ export namespace ModuleViewer{
         @Property({
             description: 'If true exposes camera using dedicated IO'
         })
-        exposeCamera: boolean = false
 
         constructor(params:
-            { backgroundColor?: string, ambientIntensity?: number, exposeCamera?:boolean } =
+            { backgroundColor?: string, lighting?: number } =
             {}) {
             Object.assign(this, params)
         }
@@ -127,8 +126,6 @@ export namespace ModuleViewer{
     })
     export class Module extends ModuleFlux {
 
-        camera$ : Pipe<PerspectiveCamera>
-        
         pluginsGateway = new PluginsGateway()
         scene: Scene
         camera: PerspectiveCamera 
@@ -160,19 +157,6 @@ export namespace ModuleViewer{
                     this.render(data, context)
                 }
             })
-            if(this.getPersistentData<PersistentData>().exposeCamera){
-                this.addInput({
-                    id:'camera',
-                    description: `Camera.`,
-                    contract: freeContract(),
-                    onTriggered: ({data, configuration, context}) => {
-                        if(!this.camera || data==this.camera)
-                            return
-                        this.camera.copy(data)
-                    }
-                })
-                this.camera$ = this.addOutput() 
-            }
         }
 
         setRenderingDiv(renderingDiv: HTMLDivElement) {
@@ -214,11 +198,6 @@ export namespace ModuleViewer{
             try {
                 const controls = new TrackballControls(this.camera, renderingDiv)
                 this.controls = controls
-                
-                if(this.camera$)
-                    this.controls.addEventListener( 'change', ( event ) => {
-                        this.camera$.next({data:this.camera})
-                    });
 
                 this.pluginsGateway.controls$.next(this.controls)   
                 this.renderer = initializeRenderer({
