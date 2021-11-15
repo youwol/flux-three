@@ -206,10 +206,10 @@ export namespace ModuleViewer{
 
             this.scene = new Scene()
             this.fluxScene = this.fluxScene.clearScene()
-            this.scene.background = new Color(parseInt(config.backgroundColor));
             
             let lights = createDefaultLights(config.ambientIntensity)
             this.scene.add(lights)     
+            this.scene.background = new Color(config.backgroundColor);
 
             try {
                 const controls = new TrackballControls(this.camera, renderingDiv)
