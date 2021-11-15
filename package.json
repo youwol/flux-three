@@ -73,9 +73,7 @@
             "@youwol/flux-view": "0.x",
             "@youwol/fv-group": "0.x",
             "@youwol/fv-input": "0.x",
-            "@youwol/fv-button": "0.x",
-            "three-trackballcontrols": "0.0.8",
-            "three": "0.114.0"
+            "@youwol/fv-button": "0.x"
         }
     }
 }

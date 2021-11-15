@@ -102,9 +102,10 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="lib_viewer_module.moduleviewer.persistentdata.html#ambientintensity" class="tsd-kind-icon">ambient<wbr>Intensity</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="lib_viewer_module.moduleviewer.persistentdata.html#backgroundcolor" class="tsd-kind-icon">background<wbr>Color</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="lib_viewer_module.moduleviewer.persistentdata.html#exposecamera" class="tsd-kind-icon">expose<wbr>Camera</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="lib_viewer_module.moduleviewer.persistentdata.html#groundintensity" class="tsd-kind-icon">ground<wbr>Intensity</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="lib_viewer_module.moduleviewer.persistentdata.html#skyintensity" class="tsd-kind-icon">sky<wbr>Intensity</a></li>
 							</ul>
 						</section>
 					</div>
@@ -116,28 +117,31 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Persistent<wbr>Data<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{ </span>ambientIntensity<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>backgroundColor<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>exposeCamera<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="lib_viewer_module.moduleviewer.persistentdata.html" class="tsd-signature-type" data-tsd-kind="Class">PersistentData</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Persistent<wbr>Data<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{ </span>backgroundColor<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>exposeCamera<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>groundIntensity<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>skyIntensity<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="lib_viewer_module.moduleviewer.persistentdata.html" class="tsd-signature-type" data-tsd-kind="Class">PersistentData</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/youwol/flux-three/blob/bd26810/src/lib/viewer.module.ts#L87">src/lib/viewer.module.ts:87</a></li>
+									<li>Defined in <a href="https://github.com/youwol/flux-three/blob/56b3310/src/lib/viewer.module.ts#L91">src/lib/viewer.module.ts:91</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>params: <span class="tsd-signature-symbol">{ </span>ambientIntensity<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>backgroundColor<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>exposeCamera<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> = ...</span></h5>
+									<h5>params: <span class="tsd-signature-symbol">{ </span>backgroundColor<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>exposeCamera<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>groundIntensity<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>skyIntensity<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> = ...</span></h5>
 									<ul class="tsd-parameters">
-										<li class="tsd-parameter">
-											<h5><span class="tsd-flag ts-flagOptional">Optional</span> ambient<wbr>Intensity<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span></h5>
-										</li>
 										<li class="tsd-parameter">
 											<h5><span class="tsd-flag ts-flagOptional">Optional</span> background<wbr>Color<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
 										</li>
 										<li class="tsd-parameter">
 											<h5><span class="tsd-flag ts-flagOptional">Optional</span> expose<wbr>Camera<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5><span class="tsd-flag ts-flagOptional">Optional</span> ground<wbr>Intensity<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5><span class="tsd-flag ts-flagOptional">Optional</span> sky<wbr>Intensity<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span></h5>
 										</li>
 									</ul>
 								</li>
@@ -150,27 +154,12 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="ambientintensity" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> ambient<wbr>Intensity</h3>
-					<div class="tsd-signature tsd-kind-icon">ambient<wbr>Intensity<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 1</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/bd26810/src/lib/viewer.module.ts#L81">src/lib/viewer.module.ts:81</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Ambient light intensity</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="backgroundcolor" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> background<wbr>Color</h3>
-					<div class="tsd-signature tsd-kind-icon">background<wbr>Color<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;0xFFFFFF&quot;</span></div>
+					<div class="tsd-signature tsd-kind-icon">background<wbr>Color<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;#888888&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/bd26810/src/lib/viewer.module.ts#L72">src/lib/viewer.module.ts:72</a></li>
+							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/56b3310/src/lib/viewer.module.ts#L72">src/lib/viewer.module.ts:72</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -185,7 +174,27 @@
 					<div class="tsd-signature tsd-kind-icon">expose<wbr>Camera<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/bd26810/src/lib/viewer.module.ts#L87">src/lib/viewer.module.ts:87</a></li>
+							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/56b3310/src/lib/viewer.module.ts#L91">src/lib/viewer.module.ts:91</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="groundintensity" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> ground<wbr>Intensity</h3>
+					<div class="tsd-signature tsd-kind-icon">ground<wbr>Intensity<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0.1</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/56b3310/src/lib/viewer.module.ts#L84">src/lib/viewer.module.ts:84</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="skyintensity" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> sky<wbr>Intensity</h3>
+					<div class="tsd-signature tsd-kind-icon">sky<wbr>Intensity<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0.7</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/youwol/flux-three/blob/56b3310/src/lib/viewer.module.ts#L78">src/lib/viewer.module.ts:78</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -272,13 +281,16 @@
 								<a href="lib_viewer_module.moduleviewer.persistentdata.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="lib_viewer_module.moduleviewer.persistentdata.html#ambientintensity" class="tsd-kind-icon">ambient<wbr>Intensity</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="lib_viewer_module.moduleviewer.persistentdata.html#backgroundcolor" class="tsd-kind-icon">background<wbr>Color</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="lib_viewer_module.moduleviewer.persistentdata.html#exposecamera" class="tsd-kind-icon">expose<wbr>Camera</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="lib_viewer_module.moduleviewer.persistentdata.html#groundintensity" class="tsd-kind-icon">ground<wbr>Intensity</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="lib_viewer_module.moduleviewer.persistentdata.html#skyintensity" class="tsd-kind-icon">sky<wbr>Intensity</a>
 							</li>
 						</ul>
 					</li>

@@ -25,7 +25,7 @@ let inputContract = contract({
 
 
 export function defaultMaterial() {
-    return new MeshStandardMaterial({ color: 0x3399ff , side:DoubleSide})
+    return new MeshStandardMaterial({ color: 0xaaaaaa , side:DoubleSide})
 }
 
 

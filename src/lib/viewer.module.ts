@@ -2,7 +2,7 @@ import { Scene as FluxScene, BuilderView, Flux, Property, RenderView, Schema, Mo
     expectSome, expectInstanceOf, Context, createEmptyScene, freeContract, Pipe } from '@youwol/flux-core'
     
 import { ReplaySubject, Subject } from 'rxjs'
-import { Color, Object3D, PerspectiveCamera, Scene, WebGLRenderer } from 'three'
+import { Color, Group, HemisphereLight, Object3D, PerspectiveCamera, Scene, WebGLRenderer } from 'three'
 import * as TrackballControls from 'three-trackballcontrols'
 import { render, VirtualDOM} from '@youwol/flux-view'
 
@@ -69,16 +69,20 @@ export namespace ModuleViewer{
             description: "background color", 
             type: "color" 
         })
-        readonly backgroundColor: string = "0xFFFFFF"
+        readonly backgroundColor: string = "#888888"
 
-        /**
-         * Ambient light intensity
-         */
         @Property({ 
-            description: "ambient light intensity", 
+            description: "Sky intensity", 
             type: "float", 
         })
-        readonly ambientIntensity: number = 1
+        readonly skyIntensity: number = 0.7
+    ​
+        @Property({ 
+            description: "Ground intensity", 
+            type: "float", 
+        })
+        readonly groundIntensity: number = 0.1
+    ​
 
 
         @Property({
@@ -87,7 +91,7 @@ export namespace ModuleViewer{
         exposeCamera: boolean = false
 
         constructor(params:
-            { backgroundColor?: string, ambientIntensity?: number, exposeCamera?:boolean } =
+            { backgroundColor?: string, skyIntensity?: number, groundIntensity?: number, exposeCamera?:boolean } =
             {}) {
             Object.assign(this, params)
         }
@@ -206,11 +210,35 @@ export namespace ModuleViewer{
 
             this.scene = new Scene()
             this.fluxScene = this.fluxScene.clearScene()
-            this.scene.background = new Color(parseInt(config.backgroundColor));
-            
-            let lights = createDefaultLights(config.ambientIntensity)
-            this.scene.add(lights)     
+            this.scene.background = new Color(config.backgroundColor);
 
+            
+            
+            //let lights = createDefaultLights(config.ambientIntensity)
+            //this.scene.add(lights)
+
+            /* const hemiLight = new HemisphereLight( 0xffffff, 0x444444, config.ambientIntensity);
+            hemiLight.position.set( 0, 2, 0 );
+            this.scene.add( hemiLight );   */
+
+            const intensitySky    = config.skyIntensity
+            const intensityground = config.groundIntensity
+        ​
+            const sky    = 0xffffff
+            const ground = createGrayColor(intensityground)
+            
+            const g = new Group
+
+            const h1 = new HemisphereLight( sky, ground, intensitySky )
+            h1.position.set( 0, 10, 10 )
+            g.add(h1)
+            
+            const h2 = new HemisphereLight( sky, ground, intensitySky )
+            h2.position.set( 0, -10, 0 )
+            g.add(h2)
+
+            this.scene.add(g)
+            
             try {
                 const controls = new TrackballControls(this.camera, renderingDiv)
                 this.controls = controls
@@ -315,4 +343,14 @@ export namespace ModuleViewer{
         }
         return render(vDOM)
     }
+}
+
+function createGrayColor(intensity) {
+    if (intensity === 0) {
+        return '#000000'
+    }
+    const value = intensity * 0xFF | 0
+    const grayscale = (value << 16) | (value << 8) | value
+    const gray = grayscale.toString(16)
+    return gray.length===5 ? '#0' + gray : '#' + gray
 }
